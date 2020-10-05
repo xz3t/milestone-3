@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test coonect db</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
         {% for list in lists %}
             {{list.shopping_list_name}}
             {{list.shopping_list_item_1}}
@@ -14,5 +8,4 @@
             {{list.shopping_list_item_4}}
             {{list.shopping_list_item_5}}
         {% endfor %}
-</body>
-</html>
+{% endblock %}
