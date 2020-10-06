@@ -26,8 +26,9 @@ def items():
 
 @app.route('/add_item')
 def add_item():
-    return render_template("additem.html")
-
+    return render_template("additem.html", 
+        categories=mongo.db.items_categories.find(), 
+        shops=mongo.db.items_shops.find())
 
 @app.route('/recipes')
 def recipes():

@@ -15,9 +15,9 @@
         <i class="material-icons prefix">assignment</i>
          <select id="item_category" name="item_category">
           <option value="" disabled selected>Choose a category:</option>
-          <option value="1">select 1</option>
-          <option value="2">select 2</option>
-          <option value="3">select 3</option>
+          {% for cat in categories %}
+            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+          {% endfor %}
         </select>
          <label>Item Category</label>
       </div>
