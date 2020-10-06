@@ -23,6 +23,11 @@ def shopping_list():
 def items():
     return render_template("items.html", items=mongo.db.items.find())
 
+@app.route('/recipes')
+def recipes():
+    return render_template("recipes.html", recipes=mongo.db.recipes.find())    
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
