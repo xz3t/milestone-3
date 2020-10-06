@@ -30,6 +30,13 @@ def add_item():
         categories=mongo.db.items_categories.find(), 
         shops=mongo.db.items_shops.find())
 
+@app.route('/insert_item', methods=['POST'])
+def insert_item():
+    items = mongo.db.items
+    items.insert_one(request.form.to_dict())
+    return redirect(url_for('items'))
+
+
 @app.route('/recipes')
 def recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find())    

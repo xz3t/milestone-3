@@ -3,7 +3,7 @@
 <h3>Add Item</h3>
 
 <div class="row">
-  <form action="" method="POST" class="col s12">
+  <form action="{{ url_for('insert_item')}}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
@@ -50,8 +50,13 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">image</i>
         <input id="item_img" name="item_img" type="text" class="materialize-textarea" />
-        <label for="icon_telephone">Path to image: </label>
+        <label for="icon_telephone">Link to image: </label>
       </div>
+    </div>
+    <div class="row center-align">
+    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Add Item
+    <i class="material-icons right">send</i>
+    </button>
     </div>
   </form>
 </div>
