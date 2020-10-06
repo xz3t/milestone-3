@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add Item</h3>
+
+<div class="row">
+  <form action="" method="POST" class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">assignment_ind</i>
+        <input id="item_name" name="item_name" type="text" class="materialize-textarea" />
+        <label for="icon_prefix">Item Name:</label>
+      </div>
+         <div class="row">
+        <div class="input-field col s12">
+        <i class="material-icons prefix">assignment</i>
+         <select id="item_category" name="item_category">
+          <option value="" disabled selected>Choose a category:</option>
+          <option value="1">select 1</option>
+          <option value="2">select 2</option>
+          <option value="3">select 3</option>
+        </select>
+         <label>Item Category</label>
+      </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+        <i class="material-icons prefix">vertical_align_bottom</i>
+         <select id="item_unit" name="item_unit">
+          <option value="" disabled selected>Choose unit of measurment:</option>
+          <option value="Kgs">Killos</option>
+          <option value="Litres">Litres</option>
+          <option value="Psc">Piesec</option>
+          <option value="Packs">Packs</option>
+        </select>
+         <label>Unit to measure:</label>
+      </div>
+      
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">location_searching</i>
+        <input id="item_shop" name="item_shop" type="text" class="materialize-textarea" />
+        <label for="icon_telephone">Shop to buy from : </label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">image</i>
+        <input id="item_img" name="item_img" type="text" class="materialize-textarea" />
+        <label for="icon_telephone">Path to image: </label>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
