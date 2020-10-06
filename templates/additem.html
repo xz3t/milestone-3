@@ -34,12 +34,18 @@
         </select>
          <label>Unit to measure:</label>
       </div>
-      
       </div>
-      <div class="input-field col s12">
+       <div class="row">
+        <div class="input-field col s12">
         <i class="material-icons prefix">location_searching</i>
-        <input id="item_shop" name="item_shop" type="text" class="materialize-textarea" />
-        <label for="icon_telephone">Shop to buy from : </label>
+         <select id="item_shop" name="item_shop">
+          <option value="" disabled selected>Choose a shop to buy from:</option>
+          {% for shop in shops %}
+            <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
+          {% endfor %}
+        </select>
+         <label>Shop to buy from :</label>
+      </div>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">image</i>
