@@ -19,6 +19,10 @@ def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find())
 
 
+@app.route('/items')
+def items():
+    return render_template("items.html", items=mongo.db.items.find())
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

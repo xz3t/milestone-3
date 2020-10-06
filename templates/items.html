@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% for item in items %}
+            {{item.item_name}}
+            {{item.item_category}}
+            {{item.item_shop}}
+            {{item.item_unit}}
+            {{item.item_img}}
+
+        {% endfor %}
+{% endblock %}
