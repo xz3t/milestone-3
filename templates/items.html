@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-        {% for item in items %}
-            {{item.item_name}}
-            {{item.item_category}}
-            {{item.item_shop}}
-            {{item.item_unit}}
-            {{item.item_img}}
 
+
+    <ul class="collapsible">
+        {% for item in items %}
+        <li>
+        <div class="collapsible-header"><i class="material-icons">expand_more</i>{{item.item_name}} - {{item.item_img}} </div>
+        <div class="collapsible-body"><span>Category : {{item.item_category}} <br> Shop: {{item.item_shop}} <br> Measurment: {{item.item_unit}}</span></div>
+        </li>
         {% endfor %}
+    </ul>
+ 
+
 {% endblock %}
+
