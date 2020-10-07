@@ -7,18 +7,20 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
-        <input id="item_name" name="item_name" type="text" class="materialize-textarea" />
+        <input id="item_name" name="item_name" type="text" class="materialize-textarea" value="{{item.item_name}}"/>
         <label for="icon_prefix">Item Name:</label>
       </div>
          <div class="row">
         <div class="input-field col s12">
         <i class="material-icons prefix">assignment</i>
          <select id="item_category" name="item_category">
-          <option value="" disabled selected>Choose a category:</option>
-          {% for cat in categories %}
-            
-            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
-          {% endfor %}
+                    {% for cat in categories %}
+                      {% if cat.category_name == item.item_category %}
+                      <option value="{{cat.category_name}}" selected >{{cat.category_name}}</option>
+                      {% else %}
+                       <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                    {% endif %}
+                  {% endfor %}
         </select>
          <label>Item Category</label>
       </div>
@@ -27,11 +29,14 @@
         <div class="input-field col s12">
         <i class="material-icons prefix">vertical_align_bottom</i>
          <select id="item_unit" name="item_unit">
-          <option value="" disabled selected>Choose unit of measurment:</option>
-          <option value="Kgs">Killos</option>
-          <option value="Litres">Litres</option>
-          <option value="Psc">Piesec</option>
-          <option value="Packs">Packs</option>
+            {% for un in units %}
+                {% if un.unit == item.item_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+
         </select>
          <label>Unit to measure:</label>
       </div>
@@ -40,23 +45,28 @@
         <div class="input-field col s12">
         <i class="material-icons prefix">location_searching</i>
          <select id="item_shop" name="item_shop">
-          <option value="" disabled selected>Choose a shop to buy from:</option>
-          {% for shop in shops %}
-            <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
-          {% endfor %}
+
+             {% for shop in shops %}
+                {% if shop.shop_name == item.item_shop %}
+                    <option class="left" value="{{shop.shop_name}}" selected>{{shop.shop_name}}</option>
+                 {% else %}   
+                     <option class="left" value="{{shop.shop_name}}">{{shop.shop_name}}</option>
+                   {% endif %} 
+             {% endfor %}
+         
         </select>
          <label>Shop to buy from :</label>
       </div>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">image</i>
-        <input id="item_img" name="item_img" type="text" class="materialize-textarea" />
+        <input id="item_img" name="item_img" type="text" class="materialize-textarea"  value="{{item.item_img}}"/>
         <label for="icon_telephone">Link to image: </label>
       </div>
     </div>
     <div class="row center-align">
-    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Add Item
-    <i class="material-icons right">send</i>
+    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Edit Item
+    <i class="material-icons right">edit</i>
     </button>
     <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('items')}}"><i class="material-icons right">cancel</i>Cancel</a>
     </div>
