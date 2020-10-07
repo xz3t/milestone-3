@@ -3,7 +3,7 @@
 <h3>Edit Item</h3>
 
 <div class="row">
-  <form action="{{ url_for('insert_item')}}" method="POST" class="col s12">
+  <form action="{{ url_for('update_item', item_id=item._id) }}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
