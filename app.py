@@ -28,13 +28,25 @@ def items():
 def add_item():
     return render_template("additem.html", 
         categories=mongo.db.items_categories.find(), 
-        shops=mongo.db.items_shops.find())
+        shops=mongo.db.items_shops.find(),
+        units=mongo.db.items_unit.find())
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     items = mongo.db.items
     items.insert_one(request.form.to_dict())
     return redirect(url_for('items'))
+
+@app.route('/edit_item/<item_id>')
+def edit_item(item_id):
+    the_item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
+    all_categories = mongo.db.items_categories.find()
+    all_shops = mongo.db.items_shops.find()
+    all_units = mongo.db.items_unit.find()
+    return render_template('edititem.html', item=the_item,
+        categories=all_categories,
+        shops=all_shops,
+        units=all_units)
 
 
 @app.route('/recipes')
