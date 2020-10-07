@@ -49,6 +49,20 @@ def edit_item(item_id):
         units=all_units)
 
 
+@app.route('/update_item/<item_id>', methods=["POST"])
+def update_item(item_id):
+    item = mongo.db.items
+    item.update( {'_id': ObjectId(item_id)},
+    {
+        'item_name':request.form.get('item_name'),
+        'item_category':request.form.get('item_category'),
+        'item_shop': request.form.get('item_shop'),
+        'item_unit': request.form.get('item_unit'),
+        'item_img':request.form.get('item_img')
+    })
+    return redirect(url_for('items'))
+
+
 @app.route('/recipes')
 def recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find())    
