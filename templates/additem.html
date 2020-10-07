@@ -27,10 +27,9 @@
         <i class="material-icons prefix">vertical_align_bottom</i>
          <select id="item_unit" name="item_unit">
           <option value="" disabled selected>Choose unit of measurment:</option>
-          <option value="Kgs">Killos</option>
-          <option value="Litres">Litres</option>
-          <option value="Psc">Piesec</option>
-          <option value="Packs">Packs</option>
+          {% for un in units %}
+            <option value="{{un.unit}}">{{un.unit}}</option>
+          {% endfor %}
         </select>
          <label>Unit to measure:</label>
       </div>
