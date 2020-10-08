@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 
 <div class="row ">
-    <a class="waves-effect waves-light btn blue-grey darken-3 " href="#"><i class="material-icons right">add</i>Add Recipe</a>
+    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{ url_for('add_recipe')}}"><i class="material-icons right">add</i>Add Recipe</a>
 </div>
 <ul class="collapsible">
   {% for recipe in recipes %}
@@ -19,14 +19,14 @@
     </div>
     <div class="collapsible-body">
         <ul>
-            <li> {{recipe.recipe_ingredient_1}}</li>
-            <li> {{recipe.recipe_ingredient_2}}</li>
-            <li> {{recipe.recipe_ingredient_3}}</li>
-            <li> {{recipe.recipe_ingredient_4}}</li>
-            <li> {{recipe.recipe_ingredient_5}}</li>
-            <li> {{recipe.recipe_ingredient_6}}</li>
-            <li> {{recipe.recipe_ingredient_7}}</li>
-            <li> {{recipe.recipe_ingredient_8}}</li>
+            <li> {{recipe.recipe_ingredient_1}} - {{recipe.recipe_ingredient_1_qty}} - {{recipe.recipe_ingredient_1_unit}}</li>
+            <li> {{recipe.recipe_ingredient_2}} - {{recipe.recipe_ingredient_2_qty}} - {{recipe.recipe_ingredient_2_unit}}</li>
+            <li> {{recipe.recipe_ingredient_3}} - {{recipe.recipe_ingredient_3_qty}} - {{recipe.recipe_ingredient_3_unit}}</li>
+            <li> {{recipe.recipe_ingredient_4}} - {{recipe.recipe_ingredient_4_qty}} - {{recipe.recipe_ingredient_4_unit}}</li>
+            <li> {{recipe.recipe_ingredient_5}} - {{recipe.recipe_ingredient_5_qty}} - {{recipe.recipe_ingredient_5_unit}}</li>
+            <li> {{recipe.recipe_ingredient_6}} - {{recipe.recipe_ingredient_6_qty}} - {{recipe.recipe_ingredient_6_unit}}</li>
+            <li> {{recipe.recipe_ingredient_7}} - {{recipe.recipe_ingredient_7_qty}} - {{recipe.recipe_ingredient_7_unit}}</li>
+            <li> {{recipe.recipe_ingredient_8}} - {{recipe.recipe_ingredient_8_qty}} - {{recipe.recipe_ingredient_8_unit}}</li>
         </ul>
 
       <span>
