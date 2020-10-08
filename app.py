@@ -71,12 +71,39 @@ def recipes():
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template("addrecipe.html")
+    return render_template("addrecipe.html")    
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('editrecipe.html', recipe=the_recipe)
+
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('recipes'))
+
+
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipe = mongo.db.recipes
+    recipe.update( {'_id': ObjectId(recipe_id)},
+    {
+        'recipe_name':request.form.get('recipe_name'),
+        'recipe_ingredient_1':request.form.get('recipe_ingrediet_1'),
+        'recipe_ingredient_2':request.form.get('recipe_ingrediet_2'),
+        'recipe_ingredient_3':request.form.get('recipe_ingrediet_3'),
+        'recipe_ingredient_4':request.form.get('recipe_ingrediet_4'),
+        'recipe_ingredient_5':request.form.get('recipe_ingrediet_5'),
+        'recipe_ingredient_6':request.form.get('recipe_ingrediet_6'),
+        'recipe_ingredient_7':request.form.get('recipe_ingrediet_7'),
+        'recipe_ingredient_8':request.form.get('recipe_ingrediet_8'),
+        'recipe_comment':request.form.get('recipe_comment'),
+        'recipe_img':request.form.get('recipe_img'),
+
+    })
     return redirect(url_for('recipes'))
 
 
