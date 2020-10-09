@@ -92,15 +92,8 @@ def update_recipe(recipe_id):
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'),
-        'recipe_ingredient_1':request.form.get('recipe_ingrediet_1'),
-        'recipe_ingredient_2':request.form.get('recipe_ingrediet_2'),
-        'recipe_ingredient_3':request.form.get('recipe_ingrediet_3'),
-        'recipe_ingredient_4':request.form.get('recipe_ingrediet_4'),
-        'recipe_ingredient_5':request.form.get('recipe_ingrediet_5'),
-        'recipe_ingredient_6':request.form.get('recipe_ingrediet_6'),
-        'recipe_ingredient_7':request.form.get('recipe_ingrediet_7'),
-        'recipe_ingredient_8':request.form.get('recipe_ingrediet_8'),
-        'recipe_comment':request.form.get('recipe_comment'),
+        'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
+        'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
         'recipe_img':request.form.get('recipe_img'),
 
     })
