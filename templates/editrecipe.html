@@ -8,18 +8,118 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
         <input id="recipe_name" name="recipe_name" type="text" class="materialize-textarea" value="{{recipe.recipe_name}}"/>
-        <label for="icon_prefix">Item Name:</label>
+        <label for="icon_prefix">Recipe Name:</label>
       </div>
       <div class="input-field col s6">
-        <i class="material-icons prefix">assignment_ind</i>
+        <i class="material-icons prefix">add</i>
         <input id="recipe_ingredient_1" name="recipe_ingredient_1" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_1}}"/>
         <label for="icon_prefix">Ingredient 1:</label>
       </div>
-            <div class="input-field col s6">
-        <i class="material-icons prefix">assignment_ind</i>
+      <div class="input-field col s3">
+         <select id="recipe_ingredient_1_unit" name="recipe_ingredient_1_unit">
+           {% for un in unit1 %}
+                {% if un.unit == recipe.recipe_ingredient_1_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+         <label>Uom:</label>
+      </div>
+        <div class="input-field col s3">
+        <input id="recipe_ingredient_1_qty" name="recipe_ingredient_1_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_1_qty}}"/>
+        <label for="icon_prefix">Qty:</label>
+      </div>
+
+      <div class="input-field col s6">
+        <i class="material-icons prefix">add</i>
         <input id="recipe_ingredient_2" name="recipe_ingredient_2" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_2}}"/>
         <label for="icon_prefix">Ingredient 2:</label>
       </div>
+      <div class="input-field col s3">
+         <select id="recipe_ingredient_2_unit" name="recipe_ingredient_2_unit">
+          {% for un in unit2 %}
+                {% if un.unit == recipe.recipe_ingredient_2_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+         <label>Uom:</label>
+      </div>
+        <div class="input-field col s3">
+        <input id="recipe_ingredient_2_qty" name="recipe_ingredient_2_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_2_qty}}"/>
+        <label for="icon_prefix">Qty:</label>
+      </div>
+
+     <div class="input-field col s6">
+        <i class="material-icons prefix">add</i>
+        <input id="recipe_ingredient_3" name="recipe_ingredient_3" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_3}}"/>
+        <label for="icon_prefix">Ingredient 3:</label>
+      </div>
+      <div class="input-field col s3">
+         <select id="recipe_ingredient_3_unit" name="recipe_ingredient_3_unit">
+          {% for un in unit3 %}
+                {% if un.unit == recipe.recipe_ingredient_3_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+         <label>Uom:</label>
+      </div>
+        <div class="input-field col s3">
+        <input id="recipe_ingredient_3_qty" name="recipe_ingredient_3_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_3_qty}}"/>
+        <label for="icon_prefix">Qty:</label>
+      </div>
+
+     <div class="input-field col s6">
+        <i class="material-icons prefix">add</i>
+        <input id="recipe_ingredient_4" name="recipe_ingredient_4" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_4}}"/>
+        <label for="icon_prefix">Ingredient 4:</label>
+      </div>
+      <div class="input-field col s3">
+         <select id="recipe_ingredient_4_unit" name="recipe_ingredient_4_unit">
+          {% for un in unit4 %}
+                {% if un.unit == recipe.recipe_ingredient_4_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+         <label>Uom:</label>
+      </div>
+        <div class="input-field col s3">
+        <input id="recipe_ingredient_4_qty" name="recipe_ingredient_4_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_4_qty}}"/>
+        <label for="icon_prefix">Qty:</label>
+      </div>
+
+     <div class="input-field col s6">
+        <i class="material-icons prefix">add</i>
+        <input id="recipe_ingredient_5" name="recipe_ingredient_5" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_5}}"/>
+        <label for="icon_prefix">Ingredient 5:</label>
+      </div>
+      <div class="input-field col s3">
+         <select id="recipe_ingredient_5_unit" name="recipe_ingredient_5_unit">
+          {% for un in unit5 %}
+                {% if un.unit == recipe.recipe_ingredient_5_unit%}
+                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
+                {% else %}
+                    <option value="{{un.unit}}">{{un.unit}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+         <label>Uom:</label>
+      </div>
+        <div class="input-field col s3">
+        <input id="recipe_ingredient_5_qty" name="recipe_ingredient_5_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_5_qty}}"/>
+        <label for="icon_prefix">Qty:</label>
+      </div>
+
       <div class="input-field col s12">
         <i class="material-icons prefix">image</i>
         <input id="recipe_img" name="recipe_img" type="text" class="materialize-textarea"  value="{{recipe.recipe_img}}"/>
