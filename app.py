@@ -75,8 +75,30 @@ def add_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    the_item1 = mongo.db.items.find()
+    the_unit1 = mongo.db.items_unit.find()
+    the_item2 = mongo.db.items.find()
+    the_unit2 = mongo.db.items_unit.find()
+    the_item3 = mongo.db.items.find()
+    the_unit3 = mongo.db.items_unit.find()
+    the_item4 = mongo.db.items.find()
+    the_unit4 = mongo.db.items_unit.find()
+    the_item5 = mongo.db.items.find()
+    the_unit5 = mongo.db.items_unit.find()
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('editrecipe.html', recipe=the_recipe)
+    return render_template('editrecipe.html', 
+            recipe=the_recipe,
+            unit1=the_unit1,
+            item1=the_item1,
+            unit2=the_unit2,
+            item2=the_item1,
+            unit3=the_unit3,
+            item3=the_item1,
+            unit4=the_unit4,
+            item4=the_item4,
+            item4=the_item1,
+            unit5=the_unit5,
+            item5=the_item5)
 
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -89,11 +111,26 @@ def insert_recipe():
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipe = mongo.db.recipes
+    shop_item_1= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_1')})
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
-        'recipe_name':request.form.get('recipe_name'),
+        'recipe_name':request.form.get('recipe_name'), 
         'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
+        'recipe_ingredient_1_unit':request.form.get('recipe_ingredient_1_unit'),
+        'recipe_ingredient_1_qty':request.form.get('recipe_ingredient_1_qty'),
+        'recipe_ingredient_1_shop':shop_item_1,
         'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
+        'recipe_ingredient_2_unit':request.form.get('recipe_ingredient_2_unit'),
+        'recipe_ingredient_2_qty':request.form.get('recipe_ingredient_2_qty'),
+        'recipe_ingredient_3':request.form.get('recipe_ingredient_3'),
+        'recipe_ingredient_3_unit':request.form.get('recipe_ingredient_3_unit'),
+        'recipe_ingredient_3_qty':request.form.get('recipe_ingredient_3_qty'),
+        'recipe_ingredient_4':request.form.get('recipe_ingredient_4'),
+        'recipe_ingredient_4_unit':request.form.get('recipe_ingredient_4_unit'),
+        'recipe_ingredient_4_qty':request.form.get('recipe_ingredient_4_qty'),
+        'recipe_ingredient_5':request.form.get('recipe_ingredient_5'),
+        'recipe_ingredient_5_unit':request.form.get('recipe_ingredient_5_unit'),
+        'recipe_ingredient_5_qty':request.form.get('recipe_ingredient_5_qty'),
         'recipe_img':request.form.get('recipe_img'),
 
     })
