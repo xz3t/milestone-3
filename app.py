@@ -16,7 +16,18 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/shopping_list')
 def shopping_list():
-    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find())
+    recipe = mongo.db.recipes.find_one({"recipe_name" : "Pancakes"})
+    ingredient = recipe["recipe_ingredient_1"]
+    item_1 = mongo.db.items.find_one({"item_name": ingredient})
+    shop1 = item_1["item_shop"]
+    item_1_qty = recipe["recipe_ingredient_1_qty"]
+    y = {
+        'item_name':item_1,
+        'item_shop': shop1,
+        'item_qty':item_1_qty
+    }
+
+    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find(), x = y)
 
 
 @app.route('/items')
@@ -89,16 +100,15 @@ def edit_recipe(recipe_id):
     return render_template('editrecipe.html', 
             recipe=the_recipe,
             unit1=the_unit1,
-            item1=the_item1,
+            item1=the_item1.sort("item_name"),
             unit2=the_unit2,
-            item2=the_item1,
+            item2=the_item2.sort("item_name"),
             unit3=the_unit3,
-            item3=the_item1,
+            item3=the_item3.sort("item_name"),
             unit4=the_unit4,
-            item4=the_item4,
-            item4=the_item1,
+            item4=the_item4.sort("item_name"),
             unit5=the_unit5,
-            item5=the_item5)
+            item5=the_item5.sort("item_name"))
 
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -111,14 +121,12 @@ def insert_recipe():
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipe = mongo.db.recipes
-    shop_item_1= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_1')})
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'), 
         'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
         'recipe_ingredient_1_unit':request.form.get('recipe_ingredient_1_unit'),
         'recipe_ingredient_1_qty':request.form.get('recipe_ingredient_1_qty'),
-        'recipe_ingredient_1_shop':shop_item_1,
         'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
         'recipe_ingredient_2_unit':request.form.get('recipe_ingredient_2_unit'),
         'recipe_ingredient_2_qty':request.form.get('recipe_ingredient_2_qty'),
