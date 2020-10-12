@@ -12,8 +12,20 @@
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">add</i>
-        <input id="recipe_ingredient_1" name="recipe_ingredient_1" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_1}}"/>
-        <label for="icon_prefix">Ingredient 1:</label>
+        
+         <select id="recipe_ingredient_1" name="recipe_ingredient_1" class="materialize-textarea"  >
+          <option value="" disabled selected>Choose a item:</option>
+          {% for item in item1 %}
+
+                 {% if item.item_name == recipe.recipe_ingredient_1%}
+                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                {% else %}
+                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                {% endif %}
+        
+          {% endfor %}
+        </select>
+        <label>Ingredient 1:</label>
       </div>
       <div class="input-field col s3">
          <select id="recipe_ingredient_1_unit" name="recipe_ingredient_1_unit">
@@ -34,8 +46,18 @@
 
       <div class="input-field col s6">
         <i class="material-icons prefix">add</i>
-        <input id="recipe_ingredient_2" name="recipe_ingredient_2" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_2}}"/>
-        <label for="icon_prefix">Ingredient 2:</label>
+         <select id="recipe_ingredient_2" name="recipe_ingredient_2" class="materialize-textarea"  >
+          <option value="" disabled selected>Choose a item:</option>
+          {% for item in item2 %}
+
+                 {% if item.item_name == recipe.recipe_ingredient_2%}
+                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                {% else %}
+                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                {% endif %}
+          {% endfor %}
+        </select>
+    <label>Ingredient 2:</label>
       </div>
       <div class="input-field col s3">
          <select id="recipe_ingredient_2_unit" name="recipe_ingredient_2_unit">
@@ -56,8 +78,21 @@
 
      <div class="input-field col s6">
         <i class="material-icons prefix">add</i>
-        <input id="recipe_ingredient_3" name="recipe_ingredient_3" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_3}}"/>
-        <label for="icon_prefix">Ingredient 3:</label>
+        
+         <select id="recipe_ingredient_3" name="recipe_ingredient_3" class="materialize-textarea"  >
+          <option value="" disabled selected>Choose a item:</option>
+          {% for item in item3 %}
+
+                 {% if item.item_name == recipe.recipe_ingredient_3%}
+                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                {% else %}
+                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                {% endif %}
+
+ 
+          {% endfor %}
+        </select>
+    <label>Ingredient 3:</label>
       </div>
       <div class="input-field col s3">
          <select id="recipe_ingredient_3_unit" name="recipe_ingredient_3_unit">
@@ -78,8 +113,23 @@
 
      <div class="input-field col s6">
         <i class="material-icons prefix">add</i>
-        <input id="recipe_ingredient_4" name="recipe_ingredient_4" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_4}}"/>
-        <label for="icon_prefix">Ingredient 4:</label>
+        
+
+         <select id="recipe_ingredient_4" name="recipe_ingredient_4" class="materialize-textarea"  >
+          <option value="" disabled selected>Choose a item:</option>
+          {% for item in item4 %}
+
+                 {% if item.item_name == recipe.recipe_ingredient_4%}
+                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                {% else %}
+                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                {% endif %}
+
+ 
+          {% endfor %}
+        </select>
+        <label>Ingredient 4:</label>
+
       </div>
       <div class="input-field col s3">
          <select id="recipe_ingredient_4_unit" name="recipe_ingredient_4_unit">
@@ -100,8 +150,24 @@
 
      <div class="input-field col s6">
         <i class="material-icons prefix">add</i>
-        <input id="recipe_ingredient_5" name="recipe_ingredient_5" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_5}}"/>
-        <label for="icon_prefix">Ingredient 5:</label>
+
+         <select id="recipe_ingredient_5" name="recipe_ingredient_5" class="materialize-textarea">
+          <option value="" disabled selected>Choose a item:</option>
+          {% for item in item5 %}
+
+                 {% if item.item_name == recipe.recipe_ingredient_5%}
+                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                {% else %}
+                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                {% endif %}
+
+ 
+          {% endfor %}
+        </select>
+         <label>Item 5</label>
+
+
+
       </div>
       <div class="input-field col s3">
          <select id="recipe_ingredient_5_unit" name="recipe_ingredient_5_unit">
