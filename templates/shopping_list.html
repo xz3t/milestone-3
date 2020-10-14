@@ -2,10 +2,13 @@
 {% block content %}
         {% for list in lists %}
             {{list.shopping_list_name}}
-            {{list.shopping_list_item_1}}
-            {{list.shopping_list_item_2}}
-            {{list.shopping_list_item_3}}
-            {{list.shopping_list_item_4}}
-            {{list.shopping_list_item_5}}
+             {{list.shopping_list_item_2}}
+
         {% endfor %}
+
+    <div class="row ">
+    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('insert_shop_item')}}"><i class="material-icons right">add</i>Add Item</a>
+    </div>
+   
 {% endblock %}
+

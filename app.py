@@ -30,6 +30,13 @@ def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find(), x = y)
 
 
+@app.route('/insert_shop_item', methods=['POST'])
+def insert_shop_item():
+    items = mongo.db.shopping_list
+    items.insert_one(request.form.to_dict())
+    return redirect(url_for('shopping_list'))
+
+
 @app.route('/items')
 def items():
     return render_template("items.html", items=mongo.db.items.find())
