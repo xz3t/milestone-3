@@ -57,6 +57,11 @@ def insert_shop_item():
     })
     return redirect(url_for('shopping_list'))
 
+@app.route('/add_shop_recipe')
+def add_shop_item():
+    return render_template("addshoprecipe.html",
+        recipes = mongo.db.items.find()
+        )
 
 
 @app.route('/items')
