@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-        {% for list in lists %}
-            {{list.shopping_list_name}}
-             {{list.shopping_list_item_2}}
-
-        {% endfor %}
 
     <div class="row ">
-    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('insert_shop_item')}}"><i class="material-icons right">add</i>Add Item</a>
+    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_item')}}"><i class="material-icons right">add</i>Add Item</a>
+    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_recipe')}}"><i class="material-icons right">add</i>Add Recipe</a>
     </div>
+
+<ul class="collapsible">
+  {% for list in lists %}
+  <li>
+    <div class="collapsible-header position-rel">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{list.item_name}} - {{list.item_qty}}
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <span>
+        Category : {{list.item_category}} <br />
+        Shop: {{list.item_shop}} <br />
+        Measurment: {{list.item_unit}}</span
+      >
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+ 
    
 {% endblock %}
 
