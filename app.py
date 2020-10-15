@@ -58,10 +58,31 @@ def insert_shop_item():
     return redirect(url_for('shopping_list'))
 
 @app.route('/add_shop_recipe')
-def add_shop_item():
+def add_shop_recipe():
     return render_template("addshoprecipe.html",
-        recipes = mongo.db.items.find()
+        recipes = mongo.db.recipes.find()
         )
+
+
+
+@app.route('/insert_shop_recipe/', methods=['GET','POST'])
+def insert_shop_recipe():
+    selected_item = request.form.get('recipe_name')
+    find_selected = mongo.db.items.find_one({"item_name": selected_item})
+    item_shop = find_selected["item_shop"]
+    item_category = find_selected["item_category"]
+    item_img = find_selected["item_img"]
+    recipesop = mongo.db.shopping_list
+    recipesop.insert_one( 
+    {
+        'item_name':request.form.get('item_name'), 
+        'item_unit':request.form.get('item_unit'), 
+        'item_qty':request.form.get('item_qty'),
+        'item_shop':item_shop,
+        'item_category':item_category,
+        'item_img':item_img,
+    })
+    return redirect(url_for('shopping_list'))
 
 
 @app.route('/items')
