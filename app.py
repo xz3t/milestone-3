@@ -30,11 +30,33 @@ def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find(), x = y)
 
 
-@app.route('/insert_shop_item', methods=['POST'])
+@app.route('/add_shop_item')
+def add_shop_item():
+    return render_template("addshopitem.html",
+        items = mongo.db.items.find(),
+        units=mongo.db.items_unit.find(),
+        )
+
+
+@app.route('/insert_shop_item/', methods=['GET','POST'])
 def insert_shop_item():
-    items = mongo.db.shopping_list
-    items.insert_one(request.form.to_dict())
+    selected_item = request.form.get('item_name')
+    find_selected = mongo.db.items.find_one({"item_name": selected_item})
+    item_shop = find_selected["item_shop"]
+    item_category = find_selected["item_category"]
+    item_img = find_selected["item_img"]
+    itemsop = mongo.db.shopping_list
+    itemsop.insert_one( 
+    {
+        'item_name':request.form.get('item_name'), 
+        'item_unit':request.form.get('item_unit'), 
+        'item_qty':request.form.get('item_qty'),
+        'item_shop':item_shop,
+        'item_category':item_category,
+        'item_img':item_img,
+    })
     return redirect(url_for('shopping_list'))
+
 
 
 @app.route('/items')
