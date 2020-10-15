@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add Recipe</h3>
+<div class="row">
+ 
+  <form action="{{ url_for('insert_shop_recipe')}}" method="POST" class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">add</i>
+         <select id="recipe_name" name="recipe_name" class="materialize-textarea"  >
+          <option value="" disabled selected>Choose a item:</option>
+          {% for recipe in recipes %}
+                
+                <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                
+          {% endfor %}
+        </select>
+        <label>Ingredient 1:</label>
+      </div>
+</div>
+    <div class="row center-align">
+    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action" >Add Recipe
+    <i class="material-icons right">send</i>
+    </button>
+    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list')}}"><i class="material-icons right">cancel</i>Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
