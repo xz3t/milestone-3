@@ -30,6 +30,11 @@ def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find(), x = y)
 
 
+@app.route('/use_shopping_list')
+def use_shopping_list():
+    return render_template("use_shopping_list.html", lists=mongo.db.shopping_list.find())
+
+
 @app.route('/add_shop_item')
 def add_shop_item():
     return render_template("addshopitem.html",
