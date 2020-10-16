@@ -14,20 +14,24 @@
         <i class="material-icons">expand_more</i>
       </div>
       <div class="col s9">
-        {{list.item_name}} - {{list.item_qty}}
+        {{list.item_name}} - {{list.item_qty}} - {{list.item_img}} 
+                <div class="position-abs">
+          <a href="{{url_for('delete_shoping_item', list_id=list._id)}}" class="waves-effect waves-light btn btn-my red">Del</a>
+        </div>
       </div>
     </div>
-    <div class="collapsible-body">
+    <div class="collapsible-body ">
       <span>
         Category : {{list.item_category}} <br />
         Shop: {{list.item_shop}} <br />
-        Measurment: {{list.item_unit}}</span
+        Measurment: {{list.item_unit}}<br />
+        Added from : {{list.from_recipe}} </span
       >
     </div>
   </li>
   {% endfor %}
 </ul>
- 
+
    
 {% endblock %}
 

@@ -63,7 +63,6 @@ def add_shop_recipe():
         )
 
 
-
 @app.route('/insert_shop_recipe/', methods=['GET','POST'])
 def insert_shop_recipe():
     selected_recipe = request.form.get('recipe_name')
@@ -151,6 +150,12 @@ def insert_shop_recipe():
         'from_recipe': selected_recipe
     }
     ])
+    return redirect(url_for('shopping_list'))
+
+
+@app.route('/delete_shoping_item/<list_id>')
+def delete_shoping_item(list_id):
+    mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
     return redirect(url_for('shopping_list'))
 
 
