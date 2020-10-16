@@ -1,18 +1,21 @@
-.btn {
-    height: 24px;
-    width: 60px;
-    line-height: 24px;
-    margin: 5px 5px;
-    padding: 0 0.5em;
+html {
+  scroll-behavior: smooth;
 }
 
-.collapsible-secondary { 
-    position: absolute; 
-    right: 0; 
-    top: 10px;
+.btn-my {
+  height: 24px;
+  width: 60px;
+  line-height: 24px;
+  margin: 5px 5px;
+  padding: 0 0.5em;
 }
 
-.collapsible-header  {
-position: relative;
+.position-abs {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
 
+.position-rel {
+  position: relative;
 }
