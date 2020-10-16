@@ -4,15 +4,13 @@
 <ul class="collapsible">
   {% for list in lists %}
   <li>
-    <div class="collapsible-header position-rel">
+    <div class="collapsible-header">
       <div class="col s3">
         <i class="material-icons">expand_more</i>
       </div>
       <div class="col s9">
-        {{list.item_name}} - {{list.item_qty}} - {{list.item_img}} 
-                <div class="position-abs">
-          <a href="{{url_for('delete_shoping_item', list_id=list._id)}}" class="waves-effect waves-light btn btn-my red">Del</a>
-        </div>
+        {{list.item_name}} - {{list.item_qty}} - {{list.item_img}} ----  {{list.purchased}} 
+
       </div>
     </div>
     <div class="collapsible-body ">

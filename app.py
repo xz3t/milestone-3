@@ -21,8 +21,31 @@ def shopping_list():
 
 @app.route('/use_shopping_list')
 def use_shopping_list():
+    return render_template("use_shopping_list.html", lists=mongo.db.shopping_list_temp.find())
 
-    return render_template("use_shopping_list.html", lists=mongo.db.shopping_list.find())
+
+@app.route('/shopping_list_temp')
+def shopping_list_temp():
+    shop_list=mongo.db.shopping_list.find()
+    shop_list_aggregate = []
+    shop_list_aggregate_key = []
+    for item in shop_list:
+        key = item["item_name"]
+        if key in shop_list_aggregate_key:
+            for item_agg in shop_list_aggregate:
+                if item_agg["item_name"] == key:
+                    item_agg["item_qty"] = int(item_agg["item_qty"]) + int(item["item_qty"])
+                    item_agg["from_recipe"] = item_agg["from_recipe"] + ", " + item["from_recipe"]
+                    
+        else:
+            item["purchased"] = "no"
+            shop_list_aggregate.append(item)
+            shop_list_aggregate_key.append(item["item_name"])
+
+    mongo.db.shopping_list_temp.drop()
+    mongo.db.shopping_list_temp.insert_many(shop_list_aggregate)
+
+    return redirect(url_for('use_shopping_list'))
 
 
 @app.route('/add_shop_item')
