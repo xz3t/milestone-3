@@ -9,17 +9,17 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav id="top">
             <div class="nav-wrapper blue-grey darken-3">
                 <a href="#" class="brand-logo right">My Shopping List</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="#">Shopping List</a></li>
+                    <li><a href="{{url_for('shopping_list')}}">Shopping List</a></li>
                     <li><a href="{{url_for('items')}}">Items</a></li>
                     <li><a href="{{url_for('recipes')}}">Recipes</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a href="#">Shopping List</a></li>
+                    <li><a href="{{url_for('shopping_list')}}">Shopping List</a></li>
                     <li><a href="{{url_for('items')}}">Items</a></li>
                     <li><a href="{{url_for('recipes')}}">Recipes</a></li>
                 </ul>
@@ -30,6 +30,11 @@
         {% block content %}
         {% endblock %}
     </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large blue-grey darken-3" href="#top">
+            <i class="large material-icons">arrow_upward</i>
+        </a>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
@@ -38,7 +43,8 @@
             $(".collapsible").collapsible();
             $('select').material_select();
             $('.modal').modal();
-            
+        
+
         });   
     </script>
 </body>
