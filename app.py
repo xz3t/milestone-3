@@ -201,7 +201,7 @@ def update_item(item_id):
 @app.route('/recipes')
 def recipes():
     return render_template("recipes.html", 
-        recipes=mongo.db.recipes.find())    
+        recipes=mongo.db.recipes.find().sort("recipe_name"))    
 
 
 @app.route('/add_recipe')
@@ -235,33 +235,18 @@ def insert_recipe():
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipe = mongo.db.recipes
-    object_item_1= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_1')})
-    object_item_2= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_2')})
-    object_item_3= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_3')})
-    object_item_4= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_4')})
-    object_item_5= mongo.db.items.find_one({"item_name": request.form.get('recipe_ingredient_5')})
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'), 
         'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
-        'recipe_ingredient_1_object':object_item_1,
-        'recipe_ingredient_1_unit':request.form.get('recipe_ingredient_1_unit'),
         'recipe_ingredient_1_qty':request.form.get('recipe_ingredient_1_qty'),
         'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
-        'recipe_ingredient_2_object':object_item_2,
-        'recipe_ingredient_2_unit':request.form.get('recipe_ingredient_2_unit'),
         'recipe_ingredient_2_qty':request.form.get('recipe_ingredient_2_qty'),
         'recipe_ingredient_3':request.form.get('recipe_ingredient_3'),
-        'recipe_ingredient_3_object':object_item_3,
-        'recipe_ingredient_3_unit':request.form.get('recipe_ingredient_3_unit'),
         'recipe_ingredient_3_qty':request.form.get('recipe_ingredient_3_qty'),
         'recipe_ingredient_4':request.form.get('recipe_ingredient_4'),
-        'recipe_ingredient_4_object':object_item_4,
-        'recipe_ingredient_4_unit':request.form.get('recipe_ingredient_4_unit'),
         'recipe_ingredient_4_qty':request.form.get('recipe_ingredient_4_qty'),
         'recipe_ingredient_5':request.form.get('recipe_ingredient_5'),
-        'recipe_ingredient_5_object':object_item_5,
-        'recipe_ingredient_5_unit':request.form.get('recipe_ingredient_5_unit'),
         'recipe_ingredient_5_qty':request.form.get('recipe_ingredient_5_qty'),
         'recipe_img':request.form.get('recipe_img'),
 
