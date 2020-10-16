@@ -34,7 +34,6 @@ def shopping_list():
 def add_shop_item():
     return render_template("addshopitem.html",
         items = mongo.db.items.find(),
-        units=mongo.db.items_unit.find(),
         )
 
 

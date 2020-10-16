@@ -5,30 +5,19 @@
  
   <form action="{{ url_for('insert_shop_item')}}" method="POST" class="col s12">
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
          <select id="item_name" name="item_name" class="materialize-textarea"  >
           <option value="" disabled selected>Choose a item:</option>
           {% for item in items %}
                 
-                <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 
           {% endfor %}
         </select>
         <label>Ingredient 1:</label>
       </div>
       <div class="row">
-        <div class="input-field col s3">
-        <i class="material-icons prefix">vertical_align_bottom</i>
-         <select id="item_unit" name="item_unit">
-          <option value="" disabled selected>Choose unit of measurment:</option>
-          {% for un in units %}
-            <option value="{{un.unit}}">{{un.unit}}</option>
-          {% endfor %}
-        </select>
-         <label>Unit to measure:</label>
-      </div>
-      
         <div class="input-field col s3">
         <input id="item_qty" name="item_qty" type="text" class="materialize-textarea" />
         <label for="icon_prefix">Qty:</label>
