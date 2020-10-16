@@ -66,17 +66,45 @@ def add_shop_recipe():
 
 @app.route('/insert_shop_recipe/', methods=['GET','POST'])
 def insert_shop_recipe():
-    selected_item = request.form.get('recipe_name')
-    find_selected = mongo.db.recipes.find_one({"recipe_name": selected_item})
-    item1_name = find_selected["recipe_ingredient_1"]
+    selected_recipe = request.form.get('recipe_name')
+    selected_recipe_get = mongo.db.recipes.find_one({"recipe_name": selected_recipe})
+    item1_name = selected_recipe_get["recipe_ingredient_1"]
+    item2_name = selected_recipe_get["recipe_ingredient_2"]
+    item3_name = selected_recipe_get["recipe_ingredient_3"]
+    item4_name = selected_recipe_get["recipe_ingredient_4"]
+    item5_name = selected_recipe_get["recipe_ingredient_5"]
     find_selected_item = mongo.db.items.find_one({"item_name": item1_name})
+    find_selected_item_2 = mongo.db.items.find_one({"item_name": item2_name})
+    find_selected_item_3 = mongo.db.items.find_one({"item_name": item3_name})
+    find_selected_item_4 = mongo.db.items.find_one({"item_name": item4_name})
+    find_selected_item_5 = mongo.db.items.find_one({"item_name": item5_name})
     item1_unit = find_selected_item["item_unit"]
-    item1_qty = find_selected["recipe_ingredient_1_qty"]
+    item2_unit = find_selected_item_2["item_unit"]
+    item3_unit = find_selected_item_3["item_unit"]
+    item4_unit = find_selected_item_4["item_unit"]
+    item5_unit = find_selected_item_5["item_unit"]
+    item1_qty = selected_recipe_get["recipe_ingredient_1_qty"]
+    item2_qty = selected_recipe_get["recipe_ingredient_2_qty"]
+    item3_qty = selected_recipe_get["recipe_ingredient_3_qty"]
+    item4_qty = selected_recipe_get["recipe_ingredient_4_qty"]
+    item5_qty = selected_recipe_get["recipe_ingredient_5_qty"]
     item1_shop = find_selected_item["item_shop"]
+    item2_shop = find_selected_item_2["item_shop"]
+    item3_shop = find_selected_item_3["item_shop"]
+    item4_shop = find_selected_item_4["item_shop"]
+    item5_shop = find_selected_item_5["item_shop"]
     item1_category = find_selected_item["item_category"]
+    item2_category = find_selected_item_2["item_category"]
+    item3_category = find_selected_item_3["item_category"]
+    item4_category = find_selected_item_4["item_category"]
+    item5_category = find_selected_item_5["item_category"]
     item1_img = find_selected_item["item_img"]
+    item2_img = find_selected_item_2["item_img"]
+    item3_img = find_selected_item_3["item_img"]
+    item4_img = find_selected_item_4["item_img"]
+    item5_img = find_selected_item_5["item_img"]
     recipesop = mongo.db.shopping_list
-    recipesop.insert_one( 
+    recipesop.insert_many( [
     {
         'item_name':item1_name, 
         'item_unit':item1_unit, 
@@ -84,7 +112,45 @@ def insert_shop_recipe():
         'item_shop':item1_shop,
         'item_category':item1_category,
         'item_img':item1_img,
-    })
+        'from_recipe': selected_recipe
+    },
+     {
+        'item_name':item2_name, 
+        'item_unit':item2_unit, 
+        'item_qty':item2_qty,
+        'item_shop':item2_shop,
+        'item_category':item2_category,
+        'item_img':item2_img,
+        'from_recipe': selected_recipe
+    },
+     {
+        'item_name':item3_name, 
+        'item_unit':item3_unit, 
+        'item_qty':item3_qty,
+        'item_shop':item3_shop,
+        'item_category':item3_category,
+        'item_img':item3_img,
+        'from_recipe': selected_recipe
+    },
+     {
+        'item_name':item4_name, 
+        'item_unit':item4_unit, 
+        'item_qty':item4_qty,
+        'item_shop':item4_shop,
+        'item_category':item4_category,
+        'item_img':item4_img,
+        'from_recipe': selected_recipe
+    },
+     {
+        'item_name':item5_name, 
+        'item_unit':item5_unit, 
+        'item_qty':item5_qty,
+        'item_shop':item5_shop,
+        'item_category':item5_category,
+        'item_img':item5_img,
+        'from_recipe': selected_recipe
+    }
+    ])
     return redirect(url_for('shopping_list'))
 
 
