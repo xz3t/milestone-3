@@ -16,22 +16,12 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/shopping_list')
 def shopping_list():
-    recipe = mongo.db.recipes.find_one({"recipe_name" : "Pancakes"})
-    ingredient = recipe["recipe_ingredient_1"]
-    item_1 = mongo.db.items.find_one({"item_name": ingredient})
-    shop1 = item_1["item_shop"]
-    item_1_qty = recipe["recipe_ingredient_1_qty"]
-    y = {
-        'item_name':item_1,
-        'item_shop': shop1,
-        'item_qty':item_1_qty
-    }
-
-    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find(), x = y)
+    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find())
 
 
 @app.route('/use_shopping_list')
 def use_shopping_list():
+
     return render_template("use_shopping_list.html", lists=mongo.db.shopping_list.find())
 
 
