@@ -43,16 +43,18 @@ def insert_shop_item():
     find_selected = mongo.db.items.find_one({"item_name": selected_item})
     item_shop = find_selected["item_shop"]
     item_category = find_selected["item_category"]
+    item_unit = find_selected["item_unit"]
     item_img = find_selected["item_img"]
     itemsop = mongo.db.shopping_list
     itemsop.insert_one( 
     {
         'item_name':request.form.get('item_name'), 
-        'item_unit':request.form.get('item_unit'), 
+        'item_unit':item_unit,
         'item_qty':request.form.get('item_qty'),
         'item_shop':item_shop,
         'item_category':item_category,
         'item_img':item_img,
+        'from_recipe': "--"
     })
     return redirect(url_for('shopping_list'))
 
@@ -155,7 +157,11 @@ def insert_shop_recipe():
 
 @app.route('/delete_shoping_item/<list_id>')
 def delete_shoping_item(list_id):
-    mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
+    item = mongo.db.shopping_list.find_one({'_id': ObjectId(list_id)})
+    if item['from_recipe'] == "--":
+        mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
+    else :
+        mongo.db.shopping_list.remove({'from_recipe': item['from_recipe']})
     return redirect(url_for('shopping_list'))
 
 
