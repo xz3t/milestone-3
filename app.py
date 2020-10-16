@@ -68,19 +68,23 @@ def add_shop_recipe():
 @app.route('/insert_shop_recipe/', methods=['GET','POST'])
 def insert_shop_recipe():
     selected_item = request.form.get('recipe_name')
-    find_selected = mongo.db.items.find_one({"item_name": selected_item})
-    item_shop = find_selected["item_shop"]
-    item_category = find_selected["item_category"]
-    item_img = find_selected["item_img"]
+    find_selected = mongo.db.recipes.find_one({"recipe_name": selected_item})
+    item1_name = find_selected["recipe_ingredient_1"]
+    find_selected_item = mongo.db.items.find_one({"item_name": item1_name})
+    item1_unit = find_selected_item["item_unit"]
+    item1_qty = find_selected["recipe_ingredient_1_qty"]
+    item1_shop = find_selected_item["item_shop"]
+    item1_category = find_selected_item["item_category"]
+    item1_img = find_selected_item["item_img"]
     recipesop = mongo.db.shopping_list
     recipesop.insert_one( 
     {
-        'item_name':request.form.get('item_name'), 
-        'item_unit':request.form.get('item_unit'), 
-        'item_qty':request.form.get('item_qty'),
-        'item_shop':item_shop,
-        'item_category':item_category,
-        'item_img':item_img,
+        'item_name':item1_name, 
+        'item_unit':item1_unit, 
+        'item_qty':item1_qty,
+        'item_shop':item1_shop,
+        'item_category':item1_category,
+        'item_img':item1_img,
     })
     return redirect(url_for('shopping_list'))
 
@@ -142,27 +146,17 @@ def add_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_item1 = mongo.db.items.find()
-    the_unit1 = mongo.db.items_unit.find()
     the_item2 = mongo.db.items.find()
-    the_unit2 = mongo.db.items_unit.find()
     the_item3 = mongo.db.items.find()
-    the_unit3 = mongo.db.items_unit.find()
     the_item4 = mongo.db.items.find()
-    the_unit4 = mongo.db.items_unit.find()
     the_item5 = mongo.db.items.find()
-    the_unit5 = mongo.db.items_unit.find()
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('editrecipe.html', 
             recipe=the_recipe,
-            unit1=the_unit1,
             item1=the_item1.sort("item_name"),
-            unit2=the_unit2,
             item2=the_item2.sort("item_name"),
-            unit3=the_unit3,
             item3=the_item3.sort("item_name"),
-            unit4=the_unit4,
             item4=the_item4.sort("item_name"),
-            unit5=the_unit5,
             item5=the_item5.sort("item_name"))
 
 

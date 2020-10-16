@@ -5,7 +5,7 @@
 <div class="row">
   <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s9">
         <i class="material-icons prefix">assignment_ind</i>
         <input id="recipe_name" name="recipe_name" type="text" class="materialize-textarea" value="{{recipe.recipe_name}}"/>
         <label for="icon_prefix">Recipe Name:</label>
@@ -18,26 +18,14 @@
           {% for item in item1 %}
 
                  {% if item.item_name == recipe.recipe_ingredient_1%}
-                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                    <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 {% else %}
-                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                    <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
                 {% endif %}
         
           {% endfor %}
         </select>
         <label>Ingredient 1:</label>
-      </div>
-      <div class="input-field col s3">
-         <select id="recipe_ingredient_1_unit" name="recipe_ingredient_1_unit">
-           {% for un in unit1 %}
-                {% if un.unit == recipe.recipe_ingredient_1_unit%}
-                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
-                {% else %}
-                    <option value="{{un.unit}}">{{un.unit}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-         <label>Uom:</label>
       </div>
         <div class="input-field col s3">
         <input id="recipe_ingredient_1_qty" name="recipe_ingredient_1_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_1_qty}}"/>
@@ -51,26 +39,15 @@
           {% for item in item2 %}
 
                  {% if item.item_name == recipe.recipe_ingredient_2%}
-                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                    <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 {% else %}
-                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                    <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
                 {% endif %}
           {% endfor %}
         </select>
     <label>Ingredient 2:</label>
       </div>
-      <div class="input-field col s3">
-         <select id="recipe_ingredient_2_unit" name="recipe_ingredient_2_unit">
-          {% for un in unit2 %}
-                {% if un.unit == recipe.recipe_ingredient_2_unit%}
-                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
-                {% else %}
-                    <option value="{{un.unit}}">{{un.unit}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-         <label>Uom:</label>
-      </div>
+
         <div class="input-field col s3">
         <input id="recipe_ingredient_2_qty" name="recipe_ingredient_2_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_2_qty}}"/>
         <label for="icon_prefix">Qty:</label>
@@ -84,27 +61,15 @@
           {% for item in item3 %}
 
                  {% if item.item_name == recipe.recipe_ingredient_3%}
-                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                    <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 {% else %}
-                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                    <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
                 {% endif %}
 
  
           {% endfor %}
         </select>
     <label>Ingredient 3:</label>
-      </div>
-      <div class="input-field col s3">
-         <select id="recipe_ingredient_3_unit" name="recipe_ingredient_3_unit">
-          {% for un in unit3 %}
-                {% if un.unit == recipe.recipe_ingredient_3_unit%}
-                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
-                {% else %}
-                    <option value="{{un.unit}}">{{un.unit}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-         <label>Uom:</label>
       </div>
         <div class="input-field col s3">
         <input id="recipe_ingredient_3_qty" name="recipe_ingredient_3_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_3_qty}}"/>
@@ -120,9 +85,9 @@
           {% for item in item4 %}
 
                  {% if item.item_name == recipe.recipe_ingredient_4%}
-                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                    <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 {% else %}
-                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                    <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
                 {% endif %}
 
  
@@ -130,18 +95,6 @@
         </select>
         <label>Ingredient 4:</label>
 
-      </div>
-      <div class="input-field col s3">
-         <select id="recipe_ingredient_4_unit" name="recipe_ingredient_4_unit">
-          {% for un in unit4 %}
-                {% if un.unit == recipe.recipe_ingredient_4_unit%}
-                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
-                {% else %}
-                    <option value="{{un.unit}}">{{un.unit}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-         <label>Uom:</label>
       </div>
         <div class="input-field col s3">
         <input id="recipe_ingredient_4_qty" name="recipe_ingredient_4_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_4_qty}}"/>
@@ -156,9 +109,9 @@
           {% for item in item5 %}
 
                  {% if item.item_name == recipe.recipe_ingredient_5%}
-                    <option value="{{item.item_name}}" selected>{{item.item_name}}</option>
+                    <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
                 {% else %}
-                    <option value="{{item.item_name}}">{{item.item_name}}</option>
+                    <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
                 {% endif %}
 
  
@@ -166,27 +119,14 @@
         </select>
          <label>Item 5</label>
 
-
-
       </div>
-      <div class="input-field col s3">
-         <select id="recipe_ingredient_5_unit" name="recipe_ingredient_5_unit">
-          {% for un in unit5 %}
-                {% if un.unit == recipe.recipe_ingredient_5_unit%}
-                    <option value="{{un.unit}}" selected >{{un.unit}}</option>
-                {% else %}
-                    <option value="{{un.unit}}">{{un.unit}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-         <label>Uom:</label>
-      </div>
+
         <div class="input-field col s3">
         <input id="recipe_ingredient_5_qty" name="recipe_ingredient_5_qty" type="text" class="materialize-textarea" value="{{recipe.recipe_ingredient_5_qty}}"/>
         <label for="icon_prefix">Qty:</label>
       </div>
 
-      <div class="input-field col s12">
+      <div class="input-field col s9">
         <i class="material-icons prefix">image</i>
         <input id="recipe_img" name="recipe_img" type="text" class="materialize-textarea"  value="{{recipe.recipe_img}}"/>
         <label for="icon_telephone">Link to image: </label>
