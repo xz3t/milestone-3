@@ -13,7 +13,7 @@
       <div class="col s9">
         {{recipe.recipe_name}} - {{recipe.recipe_user}} - {{recipe.recipe_img}}
         <div class="position-abs">
-          <a href=" " class="waves-effect waves-light btn btn-my blue-grey lighten-3">edit</a>
+          <a href="{{ url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn-my blue-grey lighten-3">edit</a>
         </div>
       </div>
     </div>
@@ -24,17 +24,12 @@
             <li> {{recipe.recipe_ingredient_3}} - {{recipe.recipe_ingredient_3_qty}} - {{recipe.recipe_ingredient_3_unit}}</li>
             <li> {{recipe.recipe_ingredient_4}} - {{recipe.recipe_ingredient_4_qty}} - {{recipe.recipe_ingredient_4_unit}}</li>
             <li> {{recipe.recipe_ingredient_5}} - {{recipe.recipe_ingredient_5_qty}} - {{recipe.recipe_ingredient_5_unit}}</li>
-            <li> {{recipe.recipe_ingredient_6}} - {{recipe.recipe_ingredient_6_qty}} - {{recipe.recipe_ingredient_6_unit}}</li>
-            <li> {{recipe.recipe_ingredient_7}} - {{recipe.recipe_ingredient_7_qty}} - {{recipe.recipe_ingredient_7_unit}}</li>
-            <li> {{recipe.recipe_ingredient_8}} - {{recipe.recipe_ingredient_8_qty}} - {{recipe.recipe_ingredient_8_unit}}</li>
         </ul>
-
       <span>
             {{recipe.recipe_comment}} <br /></span>
     </div>
   </li>
   {% endfor %}
 </ul>
-
 
 {% endblock %}
