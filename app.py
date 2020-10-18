@@ -14,6 +14,11 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/index')
+def index():
+    return render_template("index.html")
+
+
 @app.route('/shopping_list')
 def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find())
