@@ -1,33 +1,31 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Item</h3>
+<h4>Add item or ingredient</h4>
 <div class="row">
- 
   <form action="{{ url_for('insert_shop_item')}}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
-         <select id="item_name" name="item_name" class="materialize-textarea"  >
+        <select id="item_name" name="item_name" class="materialize-textarea" required>
           <option value="" disabled selected>Choose a item:</option>
           {% for item in items %}
-                
-                <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
-                
+          <option value="{{item.item_name}}">{{item.item_name}} ({{item.item_unit}})</option>
           {% endfor %}
         </select>
-        <label>Ingredient 1:</label>
+        <label>Choose item or ingredient *</label>
       </div>
-      <div class="row">
-        <div class="input-field col s3">
-        <input id="item_qty" name="item_qty" type="text" class="materialize-textarea" />
-        <label for="icon_prefix">Qty:</label>
+      <div class="input-field col s3">
+        <input id="item_qty" name="item_qty" type="number" class="materialize-textarea" required />
+        <label for="icon_prefix">Qty *</label>
       </div>
-    </div></div>
+    </div>
+    <h6>* required fields</h6>
     <div class="row center-align">
-    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action" >Add Item
-    <i class="material-icons right">send</i>
-    </button>
-    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list')}}"><i class="material-icons right">cancel</i>Cancel</a>
+      <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Add Item
+        <i class="material-icons right">send</i>
+      </button>
+      <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list')}}"><i
+          class="material-icons right">cancel</i>Cancel</a>
     </div>
   </form>
 </div>
