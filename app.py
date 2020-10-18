@@ -190,7 +190,7 @@ def delete_shoping_item(list_id):
 
 @app.route('/items')
 def items():
-    return render_template("items.html", items=mongo.db.items.find())
+    return render_template("items.html", items=mongo.db.items.find().sort("item_name"))
 
 
 @app.route('/add_item')
