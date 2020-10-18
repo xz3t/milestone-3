@@ -1,62 +1,66 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Item</h3>
+<h4>Add new item</h4>
 
 <div class="row">
   <form action="{{ url_for('insert_item')}}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
-        <input id="item_name" name="item_name" type="text" class="materialize-textarea" />
-        <label for="icon_prefix">Item Name:</label>
+        <input id="item_name" name="item_name" type="text" class="materialize-textarea" required />
+        <label for="icon_prefix">Item Name *</label>
       </div>
-         <div class="row">
-        <div class="input-field col s12">
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
         <i class="material-icons prefix">assignment</i>
-         <select id="item_category" name="item_category">
+        <select id="item_category" name="item_category" required>
           <option value="" disabled selected>Choose a category:</option>
           {% for cat in categories %}
-            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+          <option value="{{cat.category_name}}">{{cat.category_name}}</option>
           {% endfor %}
         </select>
-         <label>Item Category</label>
+        <label>Item Category *</label>
       </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
         <i class="material-icons prefix">vertical_align_bottom</i>
-         <select id="item_unit" name="item_unit">
+        <select id="item_unit" name="item_unit" required>
           <option value="" disabled selected>Choose unit of measurment:</option>
           {% for un in units %}
-            <option value="{{un.unit}}">{{un.unit}}</option>
+          <option value="{{un.unit}}">{{un.unit}}</option>
           {% endfor %}
         </select>
-         <label>Unit to measure:</label>
+        <label>UOM *</label>
       </div>
-      </div>
-       <div class="row">
-        <div class="input-field col s12">
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
         <i class="material-icons prefix">location_searching</i>
-         <select id="item_shop" name="item_shop">
+        <select id="item_shop" name="item_shop" required>
           <option value="" disabled selected>Choose a shop to buy from:</option>
           {% for shop in shops %}
-            <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
+          <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
           {% endfor %}
         </select>
-         <label>Shop to buy from :</label>
+        <label>Shop to buy from *</label>
       </div>
-      </div>
+    </div>
+    <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">image</i>
         <input id="item_img" name="item_img" type="text" class="materialize-textarea" />
         <label for="icon_telephone">Link to image: </label>
       </div>
     </div>
+    <h6>* required fields</h6>
     <div class="row center-align">
-    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Add Item
-    <i class="material-icons right">send</i>
-    </button>
-    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('items')}}"><i class="material-icons right">cancel</i>Cancel</a>
+      <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Add Item
+        <i class="material-icons right">send</i>
+      </button>
+      <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('items')}}"><i
+          class="material-icons right">cancel</i>Cancel</a>
     </div>
   </form>
 </div>
