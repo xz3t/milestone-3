@@ -1,24 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Recipe</h3>
+<h4>Create new recipe or group of items</h4>
 
-<h5>Create a recipe then edit to add or remove items and quatities</h5>
+<h6> 1st give the recipe/gorup a name then edit it to add or remove items and their quantities</h6>
 
 <div class="row">
-  <form action="{{ url_for('insert_recipe')}}" method="POST" class="col s12">
+  <form action="{{ url_for('insert_recipe')}}" method="POST" class="col s12" autocomplete="off">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">assignment_ind</i>
-        <input id="recipe_name" name="recipe_name" type="text" class="materialize-textarea" />
+        <input id="recipe_name" name="recipe_name" type="text" class="materialize-textarea" required />
         <label for="icon_prefix">Recipe Name:</label>
       </div>
     </div>
-
     <div class="row center-align">
-    <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" >Add Recipe
-    <i class="material-icons right">send</i>
-    </button>
-    <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('recipes')}}"><i class="material-icons right">cancel</i>Cancel</a>
+      <button class="btn waves-effect waves-light blue-grey darken-3" type="submit">Create Recipe
+        <i class="material-icons right">send</i>
+      </button>
+      <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('recipes')}}"><i
+          class="material-icons right">cancel</i>Cancel</a>
     </div>
   </form>
 </div>
