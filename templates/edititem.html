@@ -47,10 +47,10 @@
         <select id="item_shop" name="item_shop">
           {% for shop in shops %}
           {% if shop.shop_name == item.item_shop %}
-          <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}" selected> {{shop.shop_name}}
+          <option class="left" value="{{shop.shop_name}}" data-icon="../{{shop.shop_logo}}" selected> {{shop.shop_name}}
           </option>
           {% else %}
-          <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
+          <option class="left" value="{{shop.shop_name}}" data-icon="../{{shop.shop_logo}}">{{shop.shop_name}}</option>
           {% endif %}
           {% endfor %}
         </select>
