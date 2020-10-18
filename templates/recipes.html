@@ -8,10 +8,11 @@
   <li>
     <div class="collapsible-header position-rel">
       <div class="col s3">
-        <i class="material-icons">expand_more</i>
+        <i class="material-icons collapsable-icon">expand_more</i>
       </div>
       <div class="col s9">
-        {{recipe.recipe_name}} - {{recipe.recipe_user}} - {{recipe.recipe_img}}
+        <span class="text-item">{{recipe.recipe_name}}</span>
+        <img width="50" src="{{recipe.recipe_img}}" > 
         <div class="position-abs">
           <a href="{{ url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn-my blue-grey lighten-3">edit</a>
           <a href="{{ url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn-my red">del</a>
