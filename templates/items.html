@@ -8,10 +8,14 @@
   <li>
     <div class="collapsible-header position-rel">
       <div class="col s3">
-        <i class="material-icons">expand_more</i>
+        <i class="material-icons collapsable-icon">expand_more</i>
       </div>
       <div class="col s9">
-        {{item.item_name}} - {{item.item_img}}
+        
+        <span class="text-item">{{item.item_name}}</span>
+        
+        <img width="50" src="{{item.item_img}}" alt="{{item.item_name}} image"> 
+      
         <div class="position-abs">
           <a href="{{ url_for('edit_item', item_id=item._id)}}" class="waves-effect waves-light btn btn-my blue-grey lighten-3">edit</a>
         </div>
@@ -21,8 +25,7 @@
       <span>
         Category : {{item.item_category}} <br />
         Shop: {{item.item_shop}} <br />
-        Measurment: {{item.item_unit}}</span
-      >
+        UOM: {{item.item_unit}}</span>
     </div>
   </li>
   {% endfor %}

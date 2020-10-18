@@ -19,3 +19,13 @@ html {
 .position-rel {
   position: relative;
 }
+
+.text-item {
+    float: left;
+    margin: 10px;
+}
+
+.collapsable-icon{
+    margin-top: 7px;
+
+}
