@@ -23,7 +23,7 @@
           {% endif %}
           {% endfor %}
         </select>
-        <label>Ingredient 1:</label>
+        <label>Ingredient/item 1:</label>
       </div>
       <div class="input-field col s3">
         <input id="recipe_ingredient_1_qty" name="recipe_ingredient_1_qty" type="number" class="materialize-textarea"
@@ -42,7 +42,7 @@
           {% endif %}
           {% endfor %}
         </select>
-        <label>Ingredient 2:</label>
+        <label>Ingredient/item 2:</label>
       </div>
       <div class="input-field col s3">
         <input id="recipe_ingredient_2_qty" name="recipe_ingredient_2_qty" type="number" class="materialize-textarea"
@@ -61,7 +61,7 @@
           {% endif %}
           {% endfor %}
         </select>
-        <label>Ingredient 3:</label>
+        <label>Ingredient/item 3:</label>
       </div>
       <div class="input-field col s3">
         <input id="recipe_ingredient_3_qty" name="recipe_ingredient_3_qty" type="number" class="materialize-textarea"
@@ -80,7 +80,7 @@
           {% endif %}
           {% endfor %}
         </select>
-        <label>Ingredient 4:</label>
+        <label>Ingredient/item 4:</label>
       </div>
       <div class="input-field col s3">
         <input id="recipe_ingredient_4_qty" name="recipe_ingredient_4_qty" type="number" class="materialize-textarea"
@@ -92,7 +92,6 @@
         <select id="recipe_ingredient_5" name="recipe_ingredient_5" class="materialize-textarea">
           <option value="" disabled selected>Choose a item:</option>
           {% for item in item5 %}
-
           {% if item.item_name == recipe.recipe_ingredient_5%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
           {% else %}
@@ -100,7 +99,7 @@
           {% endif %}
           {% endfor %}
         </select>
-        <label>Item 5</label>
+        <label>Ingredient/item 5:</label>
       </div>
       <div class="input-field col s3">
         <input id="recipe_ingredient_5_qty" name="recipe_ingredient_5_qty" type="number" class="materialize-textarea"
