@@ -58,10 +58,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">image</i>
-        <input id="item_img" name="item_img" type="text" class="materialize-textarea" value="{{item.item_img}}" />
-        <label for="icon_telephone">Link to image: </label>
+      <div class="file-field input-field col s12 ">
+        <div class="btn blue-grey darken-3">
+          <span>File</span>
+          <input id="input_img" type="file" onchange="fileChange('item_img')" accept="image/*">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" id="item_img" name="item_img" value="{{item.item_img}}">
+        </div>
       </div>
     </div>
     <div class="row center-align">
