@@ -268,20 +268,55 @@ def insert_recipe():
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
+    item1_name = request.form.get('recipe_ingredient_1')
+    item2_name = request.form.get('recipe_ingredient_2')
+    item3_name = request.form.get('recipe_ingredient_3')
+    item4_name = request.form.get('recipe_ingredient_4')
+    item5_name = request.form.get('recipe_ingredient_5')
+    find_selected_item = mongo.db.items.find_one({"item_name": item1_name})
+    find_selected_item_2 = mongo.db.items.find_one({"item_name": item2_name})
+    find_selected_item_3 = mongo.db.items.find_one({"item_name": item3_name})
+    find_selected_item_4 = mongo.db.items.find_one({"item_name": item4_name})
+    find_selected_item_5 = mongo.db.items.find_one({"item_name": item5_name})
+    if find_selected_item is None:
+        item1_unit = ""
+    else:
+        item1_unit = find_selected_item["item_unit"]    
+    if find_selected_item_2 is None:
+        item2_unit = ""
+    else:
+        item2_unit = find_selected_item_2["item_unit"] 
+    if find_selected_item_3 is None:
+        item3_unit = ""
+    else:
+        item3_unit = find_selected_item_3["item_unit"]
+    if find_selected_item_4 is None:
+        item4_unit = ""
+    else:
+        item4_unit = find_selected_item_4["item_unit"]
+    if find_selected_item_5 is None:
+        item5_unit = ""
+    else:
+        item5_unit = find_selected_item_5["item_unit"]
     recipe = mongo.db.recipes
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'), 
         'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
         'recipe_ingredient_1_qty':request.form.get('recipe_ingredient_1_qty'),
+        'recipe_ingredient_1_unit': item1_unit,
         'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
         'recipe_ingredient_2_qty':request.form.get('recipe_ingredient_2_qty'),
+        'recipe_ingredient_2_unit': item2_unit,
         'recipe_ingredient_3':request.form.get('recipe_ingredient_3'),
         'recipe_ingredient_3_qty':request.form.get('recipe_ingredient_3_qty'),
+        'recipe_ingredient_3_unit': item3_unit,
         'recipe_ingredient_4':request.form.get('recipe_ingredient_4'),
         'recipe_ingredient_4_qty':request.form.get('recipe_ingredient_4_qty'),
+        'recipe_ingredient_4_unit': item4_unit,
         'recipe_ingredient_5':request.form.get('recipe_ingredient_5'),
         'recipe_ingredient_5_qty':request.form.get('recipe_ingredient_5_qty'),
+        'recipe_ingredient_5_unit': item5_unit,
         'recipe_img':request.form.get('recipe_img'),
 
     })
@@ -292,6 +327,7 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('recipes'))
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
