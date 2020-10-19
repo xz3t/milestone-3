@@ -14,7 +14,7 @@
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
         <select id="recipe_ingredient_1" name="recipe_ingredient_1" class="materialize-textarea">
-          <option value="" disabled selected>Choose a item:</option>
+          <option value=" " disabled selected>Choose a item:</option>
           {% for item in item1 %}
           {% if item.item_name == recipe.recipe_ingredient_1%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
@@ -33,7 +33,7 @@
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
         <select id="recipe_ingredient_2" name="recipe_ingredient_2" class="materialize-textarea">
-          <option value="" disabled selected>Choose a item:</option>
+          <option value=" " disabled selected>Choose a item:</option>
           {% for item in item2 %}
           {% if item.item_name == recipe.recipe_ingredient_2%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
@@ -52,7 +52,7 @@
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
         <select id="recipe_ingredient_3" name="recipe_ingredient_3" class="materialize-textarea">
-          <option value="" disabled selected>Choose a item:</option>
+          <option value=" " disabled selected>Choose a item:</option>
           {% for item in item3 %}
           {% if item.item_name == recipe.recipe_ingredient_3%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
@@ -71,7 +71,7 @@
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
         <select id="recipe_ingredient_4" name="recipe_ingredient_4" class="materialize-textarea">
-          <option value="" disabled selected>Choose a item:</option>
+          <option value=" " disabled selected>Choose a item:</option>
           {% for item in item4 %}
           {% if item.item_name == recipe.recipe_ingredient_4%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
@@ -90,7 +90,7 @@
       <div class="input-field col s9">
         <i class="material-icons prefix">add</i>
         <select id="recipe_ingredient_5" name="recipe_ingredient_5" class="materialize-textarea">
-          <option value="" disabled selected>Choose a item:</option>
+          <option value=" " disabled selected>Choose a item:</option>
           {% for item in item5 %}
           {% if item.item_name == recipe.recipe_ingredient_5%}
           <option value="{{item.item_name}}" selected>{{item.item_name}} ({{item.item_unit}})</option>
@@ -106,13 +106,16 @@
           value="{{recipe.recipe_ingredient_5_qty}}" />
         <label for="icon_prefix">Qty:</label>
       </div>
-      <div class="input-field col s12">
-        <i class="material-icons prefix">image</i>
-        <input id="recipe_img" name="recipe_img" type="text" class="materialize-textarea"
-          value="{{recipe.recipe_img}}" />
-        <label for="icon_telephone">Link to image: </label>
+       <div class="file-field input-field col s12 ">
+        <div class="btn blue-grey darken-3">
+          <span>File</span>
+          <input id="input_img" type="file" onchange="fileChange('recipe_img')" accept="image/*">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" id="recipe_img" name="recipe_img" value="{{recipe.recipe_img}}">
+        </div>
       </div>
-    </div>
+     </div>
     <div class="row center-align">
       <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Edit Item
         <i class="material-icons right">edit</i>
