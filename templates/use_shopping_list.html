@@ -1,30 +1,171 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h6>ALDI</h6>
 <ul class="collapsible">
-  {% for list in lists %}
+  {% for x in aldi %}
   <li>
     <div class="collapsible-header">
       <div class="col s3">
         <i class="material-icons">expand_more</i>
       </div>
       <div class="col s9">
-        {{list.item_name}} - {{list.item_qty}} - {{list.item_img}} ----  {{list.purchased}} 
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
 
       </div>
     </div>
     <div class="collapsible-body ">
       <span>
-        Category : {{list.item_category}} <br />
-        Shop: {{list.item_shop}} <br />
-        Measurment: {{list.item_unit}}<br />
-        Added from : {{list.from_recipe}} </span
-      >
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Added from : {{x.from_recipe}} </span>
     </div>
   </li>
   {% endfor %}
 </ul>
+<h6>Dunnes</h6>
+<ul class="collapsible">
+  {% for x in dunnes %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
 
-   
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<h6>LIDL</h6>
+<ul class="collapsible">
+  {% for x in lidl %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
+
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<h6>Tesco</h6>
+<ul class="collapsible">
+  {% for x in tesco %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
+
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<h6>Local</h6>
+<ul class="collapsible">
+  {% for x in local %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
+
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<h6>M&S</h6>
+<ul class="collapsible">
+  {% for x in ms %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
+
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<h6>Spar</h6>
+<ul class="collapsible">
+  {% for x in spar %}
+  <li>
+    <div class="collapsible-header">
+      <div class="col s3">
+        <i class="material-icons">expand_more</i>
+      </div>
+      <div class="col s9">
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
+          class="img-thumb"> ---- {{x.purchased}}
+
+      </div>
+    </div>
+    <div class="collapsible-body ">
+      <span>
+        Category : {{x.item_category}} <br />
+        Shop: {{x.item_shop}} <br />
+        Measurment: <br />
+        Added from : {{x.from_recipe}} </span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
-

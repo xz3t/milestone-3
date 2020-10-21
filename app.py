@@ -26,7 +26,14 @@ def shopping_list():
 
 @app.route('/use_shopping_list')
 def use_shopping_list():
-    return render_template("use_shopping_list.html", lists=mongo.db.shopping_list_temp.find())
+    return render_template("use_shopping_list.html",
+    aldi=mongo.db.shopping_list_temp.find({"item_shop": "ALDI"}),
+    dunnes=mongo.db.shopping_list_temp.find({"item_shop": "Dunnes"}),
+    lidl=mongo.db.shopping_list_temp.find({"item_shop": "LIDL"}),
+    tesco=mongo.db.shopping_list_temp.find({"item_shop": "Tesco"}),
+    local=mongo.db.shopping_list_temp.find({"item_shop": "Local Shop"}),
+    ms=mongo.db.shopping_list_temp.find({"item_shop": "M&S"}),
+    spar=mongo.db.shopping_list_temp.find({"item_shop": "Spar"}))
 
 
 @app.route('/shopping_list_temp')
