@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{%if aldi.count() > 0%}
+<div id="aldi">
 <h6>ALDI</h6>
 <ul class="collapsible">
   {% for x in aldi %}
   <li>
-    <div class="collapsible-header">
+    <div class="collapsible-header ">
       <div class="col s3">
-        <i class="material-icons">expand_more</i>
+        <i class="material-icons">close</i>
       </div>
       <div class="col s9">
-        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-          class="img-thumb"> ---- {{x.purchased}}
-
+        {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" class="img-thumb"> ---- {{x.purchased}}
       </div>
-    </div>
-    <div class="collapsible-body ">
-      <span>
-        Category : {{x.item_category}} <br />
-        Shop: {{x.item_shop}} <br />
-        Added from : {{x.from_recipe}} </span>
     </div>
   </li>
   {% endfor %}
 </ul>
+</div>
+{%endif%}
+
+{%if dunnes.count() > 0 %}
 <h6>Dunnes</h6>
 <ul class="collapsible">
   {% for x in dunnes %}
@@ -48,6 +46,9 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
+
+{%if lidl.count() > 0 %}
 <h6>LIDL</h6>
 <ul class="collapsible">
   {% for x in lidl %}
@@ -72,6 +73,9 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
+
+{%if tesco.count() > 0 %}
 <h6>Tesco</h6>
 <ul class="collapsible">
   {% for x in tesco %}
@@ -96,6 +100,9 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
+
+{%if local.count() > 0 %}
 <h6>Local</h6>
 <ul class="collapsible">
   {% for x in local %}
@@ -120,6 +127,9 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
+
+{%if ms.count() > 0 %}
 <h6>M&S</h6>
 <ul class="collapsible">
   {% for x in ms %}
@@ -144,6 +154,9 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
+
+{%if spar.count() > 0 %}
 <h6>Spar</h6>
 <ul class="collapsible">
   {% for x in spar %}
@@ -155,7 +168,6 @@
       <div class="col s9">
         {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
           class="img-thumb"> ---- {{x.purchased}}
-
       </div>
     </div>
     <div class="collapsible-body ">
@@ -168,4 +180,5 @@
   </li>
   {% endfor %}
 </ul>
+{%endif%}
 {% endblock %}
