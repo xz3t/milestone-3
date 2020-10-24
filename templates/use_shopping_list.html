@@ -3,17 +3,25 @@
 
 {%if aldi.count() > 0%}
 <h6>ALDI</h6> <a href="#" onclick="shopToggle('aldi')">show/hide</a>
+<a href="#" onclick="catToggle('aldi_Fruit')">Fruit</a>
+<a href="#" onclick="catToggle('aldi_Vegetable')">Vegetable</a>
+<a href="#" onclick="catToggle('aldi_Drinks')">Drinks</a>
+<a href="#" onclick="catToggle('aldi_Dairy')">Dairy</a>
+<a href="#" onclick="catToggle('aldi_Meats')">Meats</a>
+<a href="#" onclick="catToggle('aldi_Snacks')">Snacks</a>
+<a href="#" onclick="catToggle('aldi_Snacks')">Snacks</a>
+<a href="#" onclick="catToggle('aldi_Other')">Other</a>
 <div id="aldi">
   <ul class="collapsible">
     {% for x in aldi %}
     <li>
-      <div class="collapsible-header ">
+      <div class="aldi_{{x.item_category}} collapsible-header " >
         <div class="col s3">
           <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" class="img-thumb"> ----
-          {{x.purchased}}
+         <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" class="img-thumb"> ----
+          {{x.purchased}}</a>
         </div>
       </div>
     </li>
