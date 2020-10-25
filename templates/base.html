@@ -73,12 +73,18 @@
             $('.tooltipped').tooltip();
             $('.materialboxed').materialbox();
         });
-       // funciton to show hide shops in shopping list
+    // show/hide shops in shopping list
        function shopToggle(x) {
         $('#' + x).toggle("slide");
         };   
-        function catToggle(y) {
-        $('.' + y).toggle("slide");
+    // show/hide categories in shops
+        function catToggle(y,z) {
+        $("div[class*="+y+"]").hide();
+        $('.' + y+z).toggle("slide");
+        }; 
+    // show/hide All shops
+        function catAll(z) {
+        $("div[class*= "+z+"]").show();
         }; 
     </script>
 </body>
