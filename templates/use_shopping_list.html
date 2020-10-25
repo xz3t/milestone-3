@@ -2,16 +2,19 @@
 {% block content %}
 
 {%if aldi.count() > 0%}
-<h6>ALDI</h6> <a href="#" onclick="shopToggle('aldi')">show/hide</a>
-<a href="#" onclick="catToggle('aldi_Fruit')">Fruit</a>
-<a href="#" onclick="catToggle('aldi_Vegetable')">Vegetable</a>
-<a href="#" onclick="catToggle('aldi_Drinks')">Drinks</a>
-<a href="#" onclick="catToggle('aldi_Dairy')">Dairy</a>
-<a href="#" onclick="catToggle('aldi_Meats')">Meats</a>
-<a href="#" onclick="catToggle('aldi_Snacks')">Snacks</a>
-<a href="#" onclick="catToggle('aldi_Snacks')">Snacks</a>
-<a href="#" onclick="catToggle('aldi_Other')">Other</a>
+<a href="#" onclick="shopToggle('aldi')"><h6>ALDI</h6></a>
 <div id="aldi">
+<a href="#" onclick="shopToggle('aldi_cat')">Category</a>
+<div id="aldi_cat" class="scrollmenu">
+<a href="#" onclick="catAll('aldi_')">All</a>
+<a href="#" onclick="catToggle('aldi_','Fruit')">Fruit</a>
+<a href="#" onclick="catToggle('aldi_','Vegetable')">Vegetable</a>
+<a href="#" onclick="catToggle('aldi_','Drinks')">Drinks</a>
+<a href="#" onclick="catToggle('aldi_','Dairy')">Dairy</a>
+<a href="#" onclick="catToggle('aldi_','Meats')">Meats</a>
+<a href="#" onclick="catToggle('aldi_','Snacks')">Snacks</a>
+<a href="#" onclick="catToggle('aldi_','Other')">Other</a>
+</div>
   <ul class="collapsible">
     {% for x in aldi %}
     <li>
@@ -20,7 +23,7 @@
           <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-         <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" class="img-thumb"> ----
+         <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img class="materialboxed center-block " width="50" src="{{x.item_img}}"> ----
           {{x.purchased}}</a>
         </div>
       </div>
