@@ -1,4 +1,5 @@
 import os
+import smtplib, ssl
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -334,6 +335,11 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('recipes'))
+
+
+@app.route('/feedback')
+def feedback():
+    return render_template("feedback.html")
 
 
 if __name__ == '__main__':
