@@ -19,6 +19,7 @@
                     <li><a href="{{url_for('shopping_list')}}">Manage Shopping List</a></li>
                     <li><a href="{{url_for('items')}}">Items</a></li>
                     <li><a href="{{url_for('recipes')}}">Recipes</a></li>
+                    <li><a href="{{url_for('feedback')}}">Feedback</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for('index')}}">Home</a></li>
@@ -26,6 +27,7 @@
                     <li><a href="{{url_for('shopping_list')}}">Manage Shopping List</a></li>
                     <li><a href="{{url_for('items')}}">Items</a></li>
                     <li><a href="{{url_for('recipes')}}">Recipes</a></li>
+                    <li><a href="{{url_for('feedback')}}">Feedback</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,27 +40,27 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Shopping List app</h5>
+                <p class="grey-text text-lighten-4">Add items/recipies and groups of items to created your shopping list.</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/xz3t/milestone-3" target="_blank">GitHub</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{{url_for('feedback')}}">Feedback</a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
             <div class="container center">
-            © 2014 Copyright Text
+            © 2020 Copyright
             </div>
           </div>
         </footer>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large blue-grey darken-3" href="#top">
-            <i class="large material-icons">arrow_upward</i>
+        <a class="btn-floating btn-small blue-grey darken-3" href="#top">
+            <i class="small material-icons">arrow_upward</i>
         </a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -87,5 +89,6 @@
         $("div[class*= "+z+"]").show();
         }; 
     </script>
+
 </body>
 </html>
