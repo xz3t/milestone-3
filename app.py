@@ -1,5 +1,4 @@
 import os
-import smtplib, ssl
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -339,8 +338,15 @@ def delete_recipe(recipe_id):
 
 @app.route('/feedback')
 def feedback():
-    return render_template("feedback.html")
+    return render_template("feedback.html",
+    feedback = mongo.db.feedback.find())
 
+
+@app.route('/submit_feedback', methods=["POST"])
+def submit_feedback():
+    feedback = mongo.db.feedback
+    feedback.insert_one(request.form.to_dict())
+    return redirect(url_for('feedback'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
