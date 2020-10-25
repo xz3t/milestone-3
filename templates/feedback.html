@@ -3,31 +3,42 @@
 
 <h4>Feedback</h4>
 
- <div class="row">
-    <form class="col s12">
+ <div class="row" >
+    <form class="col s12" action="{{ url_for('submit_feedback')}}" method="POST" >
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+        <div class="input-field col s12">
+          <input type="text" name="name" id="name"  placeholder=" Full Name" required />
+          <label for="name">Full Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input type="email" name="email" id="email"  placeholder="Email" required />
           <label for="email">Email</label>
         </div>
       </div>
-        <div class="row">
-    <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Textarea</label>
+          <textarea id="message" class="materialize-textarea"  placeholder="Feedback message" required></textarea>
+          <label for="message">Textarea</label>
         </div>
+      </div>
+      <div class="row center-align">
+      <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Send
+        <i class="material-icons right">send</i>
+      </button>
       </div>
     </form>
   </div>
-    </form>
-  </div>
+  <hr>
+  <ul >
+    {% for msg in feedback %}
+    <li>
+        <div class="col s9">
+         {{msg.name}} {{msg.email}} | {{msg.message}} 
+        </div>
+    </li>
+    {% endfor %}
+  </ul>
    
 {% endblock %}
