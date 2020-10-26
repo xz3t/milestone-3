@@ -19,8 +19,11 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="message" class="materialize-textarea"  placeholder="Feedback message" required></textarea>
-          <label for="message">Textarea</label>
+          <textarea 
+          name="message" 
+          id="message" 
+          class="materialize-textarea"></textarea>
+          <label for="message">Feedback</label>
         </div>
       </div>
       <div class="row center-align">
@@ -31,14 +34,21 @@
     </form>
   </div>
   <hr>
-  <ul >
+  <h4>Feedback Messages </h4>
     {% for msg in feedback %}
-    <li>
-        <div class="col s9">
-         {{msg.name}} {{msg.email}} | {{msg.message}} 
+       <div class="row">
+        <div class="col s12 m12">
+          <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row ">
+              <div class="col s4 m2">
+                {{msg.name}} :
+              </div>
+              <div class="col s8 m10">
+                 <span class="wrap-feedback"> {{msg.message}} </span>
+              </div>
+            </div>
+          </div>
         </div>
-    </li>
-    {% endfor %}
-  </ul>
-   
+      </div> 
+      {% endfor %}
 {% endblock %}

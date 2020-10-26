@@ -12,6 +12,15 @@ main {
     flex: 1 0 auto;
 }
 
+header {
+    padding-bottom: 10px;
+}
+
+.btn {
+    padding: 0 1em;
+    margin: 0.5em 0.5em;
+}
+
 .btn-my {
   height: 24px;
   width: 60px;
@@ -19,6 +28,7 @@ main {
   margin: 5px 5px;
   padding: 0 0.5em;
 }
+
 
 .position-abs {
   position: absolute;
@@ -47,17 +57,17 @@ main {
 /* horisintal scrolmenu for catgories in saved shopping list*/
 
 .scrollmenu {
-  background-color: #333;
   overflow: auto;
   white-space: nowrap;
 }
 
 .scrollmenu a {
   display: inline-block;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 10px;
   text-decoration: none;
+
 }
 
 .scrollmenu a:hover {
@@ -84,4 +94,11 @@ main {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+
+/* wrap feedback mesages */
+
+.wrap-feedback {
+    word-wrap: break-word;
 }
