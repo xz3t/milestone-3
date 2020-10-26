@@ -3,11 +3,11 @@
 
 <div class="row ">
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_item')}}"><i
-      class="material-icons right">add</i>Add Item</a>
+      class="material-icons right">note_add</i>Add Item</a>
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_recipe')}}"><i
-      class="material-icons right">add</i>Add Recipe</a>
+      class="material-icons right">list</i>Add Recipe</a>
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list_temp')}}"><i
-      class="material-icons right">add</i>Use shoping list</a>
+      class="material-icons right">shop</i>Use shoping list</a>
 </div>
 <div class="row ">
   <h6>Delete warning: If an item is part of a recipe all items from that recipe will be removed!</h6>
@@ -20,11 +20,13 @@
         <i class="material-icons">expand_more</i>
       </div>
       <div class="col s9">
-        {{list.item_name}} - {{list.item_qty}} - {{list.item_img}}
+        {{list.item_name}} - {{list.item_qty}} - {{list.item_unit}}
         <div class="position-abs">
           <a href="{{url_for('delete_shoping_item', list_id=list._id)}}"
-            class="waves-effect waves-light btn tooltipped btn-my red" data-position="left"
-            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!">Del</a>
+            class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
+            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span class="material-icons">
+        delete_forever
+        </span></a>
         </div>
       </div>
     </div>
@@ -32,7 +34,6 @@
       <span>
         Category : {{list.item_category}} <br />
         Shop: {{list.item_shop}} <br />
-        Measurement: {{list.item_unit}}<br />
         Added from : {{list.from_recipe}} </span>
     </div>
   </li>
