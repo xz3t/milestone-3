@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-
+{% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+{% endif %}
 <h4>Add new item</h4>
 
 <div class="row">

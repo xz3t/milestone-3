@@ -210,9 +210,18 @@ def add_item():
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
+    error = None
     items = mongo.db.items
-    items.insert_one(request.form.to_dict())
-    return redirect(url_for('items'))
+    item_name = request.form.get('item_name')
+    exist = mongo.db.items.find_one({"item_name": item_name})
+    exist_name = exist["item_name"]
+    if item_name == exist_name:
+         error = 'Item with this name is already in database. please choice another name or edit existing item.'
+    else:
+        flash('Item succesefully added!')
+        items.insert_one(request.form.to_dict())
+        return redirect(url_for('items'))
+    return render_template("additem.html", error=error)
 
 @app.route('/edit_item/<item_id>')
 def edit_item(item_id):
