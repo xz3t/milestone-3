@@ -10,8 +10,8 @@
 <body>
     <header>
         <nav id="top">
-            <div class="nav-wrapper blue-grey darken-1">
-                <a href="{{url_for('index')}}" class="brand-logo right"><i class="material-icons">shopping_basket</i></a>
+            <div class="nav-wrapper blue-grey darken-4">
+                <a href="{{url_for('index')}}" class="brand-logo right"><i class="material-icons ">shopping_basket</i></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="{{url_for('index')}}">Home</a></li>
@@ -32,11 +32,21 @@
             </div>
         </nav>
     </header>
+     <section>
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <div class="row flashes">
+                <div class="col s6 offset-s3 center-align">
+                    <h6 class="center-align flash-messages text-shadow">{{ message }}</h6>
+                </div>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+    </section>
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
-            <footer class="page-footer blue-grey darken-1">
+            <footer class="page-footer blue-grey darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

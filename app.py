@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'weeklyShopping'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = 'secret'
 
 mongo = PyMongo(app)
 
@@ -346,7 +347,9 @@ def feedback():
 def submit_feedback():
     feedback = mongo.db.feedback
     feedback.insert_one(request.form.to_dict())
+    flash('Your feedback is submited. Thank you!')
     return redirect(url_for('feedback'))
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
