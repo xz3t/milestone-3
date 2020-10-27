@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -216,14 +217,13 @@ def insert_item():
     error = None
     items = mongo.db.items
     item_name = request.form.get('item_name')
-    exist = mongo.db.items.find_one({"item_name": item_name})
-    exist_name = exist["item_name"]
-    if item_name == exist_name:
-         error = 'Item with this name is already in database. please choice another name or edit existing item.'
-    else:
+    exist = mongo.db.items.find_one({"item_name": re.compile(item_name, re.IGNORECASE)})
+    if exist is None:
         flash('Item successfully added!')
         items.insert_one(request.form.to_dict())
         return redirect(url_for('items'))
+    else:
+        error = 'Item with this name is already in database. please choice another name or edit existing item.'
     return render_template("additem.html", error=error, categories=mongo.db.items_categories.find(), shops=mongo.db.items_shops.find(), units=mongo.db.items_unit.find())
 
 
