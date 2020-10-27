@@ -47,11 +47,9 @@ def shopping_list_temp():
         if key in shop_list_aggregate_key:
             for item_agg in shop_list_aggregate:
                 if item_agg["item_name"] == key:
-                    item_agg["item_qty"] = int(item_agg["item_qty"]) + int(item["item_qty"])
+                    item_agg["item_qty"] = float(item_agg["item_qty"]) + float(item["item_qty"])
                     item_agg["from_recipe"] = item_agg["from_recipe"] + ", " + item["from_recipe"]
-                    
         else:
-            item["purchased"] = "no"
             shop_list_aggregate.append(item)
             shop_list_aggregate_key.append(item["item_name"])
 
@@ -286,7 +284,7 @@ def edit_recipe(recipe_id):
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
-    flash('Recipe created successfully! Edit your new recipe to add items')
+    flash('Recipe created successfully! Edit your new recipe to add items.')
     return redirect(url_for('recipes'))
 
 
@@ -351,7 +349,7 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    flash('Recipe deleted successfully')
+    flash('Recipe deleted successfully!')
     return redirect(url_for('recipes'))
 
 
