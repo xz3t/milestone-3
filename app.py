@@ -210,6 +210,7 @@ def add_item():
         shops=mongo.db.items_shops.find(),
         units=mongo.db.items_unit.find())
 
+
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
     error = None
@@ -223,7 +224,8 @@ def insert_item():
         flash('Item successfully added!')
         items.insert_one(request.form.to_dict())
         return redirect(url_for('items'))
-    return render_template("additem.html", error=error)
+    return render_template("additem.html", error=error, categories=mongo.db.items_categories.find(), shops=mongo.db.items_shops.find(), units=mongo.db.items_unit.find())
+
 
 @app.route('/edit_item/<item_id>')
 def edit_item(item_id):
