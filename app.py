@@ -87,6 +87,7 @@ def insert_shop_item():
         'item_img':item_img,
         'from_recipe': "--"
     })
+    flash('Item added to the shopping list!')
     return redirect(url_for('shopping_list'))
 
 @app.route('/add_shop_recipe')
@@ -183,6 +184,7 @@ def insert_shop_recipe():
         'from_recipe': selected_recipe
     }
     ])
+    flash('All items from selected recipe added to the list!')
     return redirect(url_for('shopping_list'))
 
 
@@ -191,8 +193,10 @@ def delete_shoping_item(list_id):
     item = mongo.db.shopping_list.find_one({'_id': ObjectId(list_id)})
     if item['from_recipe'] == "--":
         mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
+        flash('Item successfully removed!')
     else :
         mongo.db.shopping_list.remove({'from_recipe': item['from_recipe']})
+        flash('All items associated with recipe removed!') 
     return redirect(url_for('shopping_list'))
 
 
@@ -218,7 +222,7 @@ def insert_item():
     if item_name == exist_name:
          error = 'Item with this name is already in database. please choice another name or edit existing item.'
     else:
-        flash('Item succesefully added!')
+        flash('Item successfully added!')
         items.insert_one(request.form.to_dict())
         return redirect(url_for('items'))
     return render_template("additem.html", error=error)
@@ -246,6 +250,7 @@ def update_item(item_id):
         'item_unit': request.form.get('item_unit'),
         'item_img':request.form.get('item_img')
     })
+    flash('Item updated successfully!')
     return redirect(url_for('items'))
 
 
@@ -258,6 +263,7 @@ def recipes():
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html")    
+
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -280,6 +286,7 @@ def edit_recipe(recipe_id):
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
+    flash('Recipe created successfully! Edit your new recipe to add items')
     return redirect(url_for('recipes'))
 
 
@@ -337,12 +344,14 @@ def update_recipe(recipe_id):
         'recipe_img':request.form.get('recipe_img'),
 
     })
+    flash('Recipe updated successfully')
     return redirect(url_for('recipes'))
 
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    flash('Recipe deleted successfully')
     return redirect(url_for('recipes'))
 
 
@@ -356,7 +365,7 @@ def feedback():
 def submit_feedback():
     feedback = mongo.db.feedback
     feedback.insert_one(request.form.to_dict())
-    flash('Your feedback is submited. Thank you!')
+    flash('Your feedback is submitted. Thank you!')
     return redirect(url_for('feedback'))
 
 
