@@ -2,29 +2,30 @@
 {% block content %}
 
 {%if aldi.count() > 0%}
-<a href="#" onclick="shopToggle('aldi')"><h6>ALDI</h6></a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('aldi')">ALDI </a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('aldi_cat')">Categories </a>
 <div id="aldi">
-<a href="#" onclick="shopToggle('aldi_cat')">Category</a>
-<div id="aldi_cat" class="scrollmenu">
-<a href="#" onclick="catAll('aldi_')">All</a>
-<a href="#" onclick="catToggle('aldi_','Fruit')">Fruit</a>
-<a href="#" onclick="catToggle('aldi_','Vegetable')">Vegetable</a>
-<a href="#" onclick="catToggle('aldi_','Drinks')">Drinks</a>
-<a href="#" onclick="catToggle('aldi_','Dairy')">Dairy</a>
-<a href="#" onclick="catToggle('aldi_','Meats')">Meats</a>
-<a href="#" onclick="catToggle('aldi_','Snacks')">Snacks</a>
-<a href="#" onclick="catToggle('aldi_','Other')">Other</a>
-</div>
+  <div id="aldi_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('aldi_')">All</a>
+    <a href="#" onclick="catToggle('aldi_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('aldi_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('aldi_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('aldi_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('aldi_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('aldi_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('aldi_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in aldi %}
     <li>
-      <div class="aldi_{{x.item_category}} collapsible-header " >
+      <div class="aldi_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
           <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-         <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img class="materialboxed center-block " width="50" src="{{x.item_img}}"> ----
-          {{x.purchased}}</a>
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
       </div>
     </li>
@@ -34,170 +35,201 @@
 {%endif%}
 
 {%if dunnes.count() > 0 %}
-<h6>Dunnes</h6><a href="#" onclick="shopToggle('dunnes')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('dunnes')">Dunnes </a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('dunnes_cat')">Categories </a>
 <div id="dunnes">
+  <div id="dunnes_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('dunnes_')">All</a>
+    <a href="#" onclick="catToggle('dunnes_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('dunnes_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('dunnes_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('dunnes_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('dunnes_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('dunnes_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('dunnes_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in dunnes %}
     <li>
-      <div class="collapsible-header">
+      <div class="dunnes_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
-
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {%if lidl.count() > 0 %}
-<h6>LIDL</h6><a href="#" onclick="shopToggle('lidl')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('lidl')">LIDL </a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('lidl_cat')">Categories </a>
 <div id="lidl">
+  <div id="lidl_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('lidl_')">All</a>
+    <a href="#" onclick="catToggle('lidl_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('lidl_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('lidl_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('lidl_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('lidl_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('lidl_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('lidl_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in lidl %}
     <li>
-      <div class="collapsible-header">
+      <div class="lidl_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
-
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {%if tesco.count() > 0 %}
-<h6>Tesco</h6><a href="#" onclick="shopToggle('tesco')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('tesco')">Tesco</a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('tesco_cat')">Categories </a>
 <div id="tesco">
+  <div id="tesco_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('tesco_')">All</a>
+    <a href="#" onclick="catToggle('tesco_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('tesco_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('tesco_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('tesco_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('tesco_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('tesco_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('tesco_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in tesco %}
     <li>
-      <div class="collapsible-header">
+      <div class="tesco_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
-
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {%if local.count() > 0 %}
-<h6>Local Shop</h6><a href="#" onclick="shopToggle('local')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('local')">Local Shop </a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('local_cat')">Categories </a>
 <div id="local">
+  <div id="local_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('local_')">All</a>
+    <a href="#" onclick="catToggle('local_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('local_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('local_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('local_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('local_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('local_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('local_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in local %}
     <li>
-      <div class="collapsible-header">
+      <div class="local_{{x.item_category}} collapsible-header position-rel ">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
-
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {%if ms.count() > 0 %}
-<h6>M&S</h6><a href="#" onclick="shopToggle('ms')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('ms')">M&S </a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('ms_cat')">Categories </a>
 <div id="ms">
+  <div id="ms_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('ms_')">All</a>
+    <a href="#" onclick="catToggle('ms_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('ms_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('ms_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('ms_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('ms_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('ms_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('ms_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in ms %}
     <li>
-      <div class="collapsible-header">
+      <div class="ms_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
-
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {%if spar.count() > 0 %}
-<h6>Spar</h6><a href="#" onclick="shopToggle('spar')">show/hide</a>
+<a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('spar')">Spar</a><a
+  class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('spar_cat')">Categories </a>
 <div id="spar">
+  <div id="spar_cat" class="scrollmenu">
+    <a href="#" onclick="catAll('spar_')">All</a>
+    <a href="#" onclick="catToggle('spar_','Fruit')">Fruit</a>
+    <a href="#" onclick="catToggle('spar_','Vegetable')">Vegetable</a>
+    <a href="#" onclick="catToggle('spar_','Drinks')">Drinks</a>
+    <a href="#" onclick="catToggle('spar_','Dairy')">Dairy</a>
+    <a href="#" onclick="catToggle('spar_','Meats')">Meats</a>
+    <a href="#" onclick="catToggle('spar_','Snacks')">Snacks</a>
+    <a href="#" onclick="catToggle('spar_','Other')">Other</a>
+  </div>
   <ul class="collapsible">
     {% for x in spar %}
     <li>
-      <div class="collapsible-header">
+      <div class="spar_{{x.item_category}} collapsible-header position-rel">
         <div class="col s3">
-          <i class="material-icons">expand_more</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="col s9">
-          {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <img src="{{x.item_img}}" alt="{{x.item_name}}"
-            class="img-thumb"> ---- {{x.purchased}}
+          <a href="#" onclick="$(this).toggleClass('strike')"> {{x.item_qty}} {{x.item_unit}} | {{x.item_name}} <span
+              class="position-abs-img"><img class="materialboxed" width="30" src="{{x.item_img}}"></span>
+          </a>
         </div>
-      </div>
-      <div class="collapsible-body ">
-        <span>
-          Category : {{x.item_category}} <br />
-          Shop: {{x.item_shop}} <br />
-          Measurment: <br />
-          Added from : {{x.from_recipe}} </span>
       </div>
     </li>
     {% endfor %}
   </ul>
-  {%endif%}
 </div>
+{%endif%}
+
 {% endblock %}
