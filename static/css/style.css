@@ -102,3 +102,10 @@ header {
 .wrap-feedback {
     word-wrap: break-word;
 }
+
+/* my shopping list */
+
+.position-abs-img {
+  position: absolute;
+  right: 2em;
+}
