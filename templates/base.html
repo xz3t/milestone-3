@@ -35,7 +35,7 @@
     <!-- section with flash message -->
      <section>
             {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <div class="row">
+            <div id="message" class="row">
                 <div class="col s6 offset-s3 center-align">
                     <h6 class="center-align text-shadow ">{{ message }}</h6>
                 </div>
