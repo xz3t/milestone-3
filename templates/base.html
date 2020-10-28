@@ -35,7 +35,7 @@
     <!-- section with flash message -->
      <section>
             {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <div class="row flashes">
+            <div class="row">
                 <div class="col s6 offset-s3 center-align">
                     <h6 class="center-align text-shadow ">{{ message }}</h6>
                 </div>
@@ -85,6 +85,8 @@
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.materialboxed').materialbox();
+    // fade out added for messages to dissapear
+            $('#message').delay(5000).fadeOut(400)
         });
     // show/hide shops in shopping list
        function shopToggle(x) {
