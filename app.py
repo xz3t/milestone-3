@@ -84,13 +84,13 @@ def shopping_list():
 @app.route('/use_shopping_list')
 def use_shopping_list():
     return render_template("use_shopping_list.html",
-    aldi=mongo.db.shopping_list_temp.find({"item_shop": "ALDI"}),
-    dunnes=mongo.db.shopping_list_temp.find({"item_shop": "Dunnes"}),
-    lidl=mongo.db.shopping_list_temp.find({"item_shop": "LIDL"}),
-    tesco=mongo.db.shopping_list_temp.find({"item_shop": "Tesco"}),
-    local=mongo.db.shopping_list_temp.find({"item_shop": "Local Shop"}),
-    ms=mongo.db.shopping_list_temp.find({"item_shop": "M&S"}),
-    spar=mongo.db.shopping_list_temp.find({"item_shop": "Spar"}))
+    aldi=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "ALDI"}),
+    dunnes=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Dunnes"}),
+    lidl=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "LIDL"}),
+    tesco=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Tesco"}),
+    local=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Local Shop"}),
+    ms=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "M&S"}),
+    spar=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Spar"}))
 
 
 
@@ -104,7 +104,7 @@ def shopping_list_temp():
     second list will hold all items information from what recipe is added and converted to float value added qty,
     when list is prepared we will remove all previous collection and write new one to database.
     '''
-    shop_list=mongo.db.shopping_list.find()
+    shop_list=mongo.db.shopping_list.find({"user": session["user"]})
     shop_list_aggregate = []
     shop_list_aggregate_key = []
     for item in shop_list:
@@ -118,7 +118,7 @@ def shopping_list_temp():
             shop_list_aggregate.append(item)
             shop_list_aggregate_key.append(item["item_name"])
 
-    mongo.db.shopping_list_temp.drop()
+    mongo.db.shopping_list_temp.remove({"user": session["user"]})
     mongo.db.shopping_list_temp.insert_many(shop_list_aggregate)
 
     return redirect(url_for('use_shopping_list'))
