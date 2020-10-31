@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 </head>
+
 <body>
     <header>
+        <!-- top navbar -->
         <nav id="top">
             <div class="nav-wrapper blue-grey darken-4">
-                <a href="{{url_for('index')}}" class="brand-logo right"><i class="material-icons ">shopping_basket</i></a>
+                <a href="{{url_for('index')}}" class="brand-logo right"><i
+                        class="material-icons ">shopping_basket</i></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="{{url_for('index')}}">Home</a></li>
@@ -21,6 +25,7 @@
                     <li><a href="{{url_for('recipes')}}">Recipes</a></li>
                     <li><a href="{{url_for('feedback')}}">Feedback</a></li>
                 </ul>
+                <!-- mobile side navigation -->
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for('index')}}">Home</a></li>
                     <li><a href="{{url_for('use_shopping_list')}}">Saved Shopping List</a></li>
@@ -33,42 +38,46 @@
         </nav>
     </header>
     <!-- section with flash message -->
-     <section>
-            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <div id="message" class="row">
-                <div class="col s6 offset-s3 center-align">
-                    <h6 class="center-align text-shadow ">{{ message }}</h6>
-                </div>
+    <section>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div id="message" class="row">
+            <div class="col s6 offset-s3 center-align">
+                <h6 class="center-align text-shadow ">{{ message }}</h6>
             </div>
-            {% endfor %} {% endif %} {% endwith %}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
     </section>
     <!-- main content -->
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
-            <footer class="page-footer blue-grey darken-4">
-          <div class="container">
+    <!-- footer content -->
+    <footer class="page-footer blue-grey darken-4">
+        <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Shopping List app</h5>
-                <p class="grey-text text-lighten-4">Add items/recipies and groups of items to created your shopping list.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/xz3t/milestone-3" target="_blank">GitHub</a></li>
-                  <li><a class="grey-text text-lighten-3" href="{{url_for('feedback')}}">Feedback</a></li>
-                </ul>
-              </div>
+                <div class="col l6 s12">
+                    <h5 class="white-text">Shopping List app</h5>
+                    <p class="grey-text text-lighten-4">Add items/recipes and groups of items to created your shopping
+                        list.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/xz3t/milestone-3"
+                                target="_blank">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{{url_for('feedback')}}">Feedback</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container center">
-            © 2020 Valentin Leu
+                © 2020 Valentin Leu
             </div>
-          </div>
-        </footer>
+        </div>
+    </footer>
+    <!-- floating button to navigate to top of the page -->
     <div class="fixed-action-btn">
         <a class="btn-floating btn-small blue-grey darken-3" href="#top">
             <i class="small material-icons">arrow_upward</i>
@@ -78,32 +87,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="{{url_for('static', filename='js/imgBB.js')}}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".button-collapse").sideNav();
             $(".collapsible").collapsible();
             $('select').material_select();
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.materialboxed').materialbox();
-    // fade out added for messages to dissapear
+            // fade out added for messages to dissapear
             $('#message').delay(5000).fadeOut(400)
         });
-    // show/hide shops in shopping list
-       function shopToggle(x) {
-        $('#' + x).toggle("slide");
-        };   
-    // show/hide categories in shops
-        function catToggle(y,z) {
-        $("div[class*="+y+"]").hide();
-        $('.' + y+z).toggle("slide");
-        }; 
-    // show/hide All shops
+        // show/hide shops in shopping list
+        function shopToggle(x) {
+            $('#' + x).toggle("slide");
+        };
+        // show/hide categories in shops
+        function catToggle(y, z) {
+            $("div[class*=" + y + "]").hide();
+            $('.' + y + z).toggle("slide");
+        };
+        // show/hide All shops
         function catAll(z) {
-        $("div[class*= "+z+"]").show();
-        }; 
-    // fix tooltip to appear over materialize select input
-        $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute', left: '50%', top: '3em'});
+            $("div[class*= " + z + "]").show();
+        };
+        // fix tooltip to appear over materialize select input
+        $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute', left: '50%', top: '3em' });
     </script>
 
 </body>
+
 </html>
