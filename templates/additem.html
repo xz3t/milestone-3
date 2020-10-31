@@ -1,8 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-{% if error %}
-    <p class=error><strong>Error:</strong> {{ error }}
-{% endif %}
+
+<!-- flash message container -->
+
+<div class="row">
+  {% if error %}
+  <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+</div>
+
 <h4>Add new item</h4>
+
+<!--Adding an item by using a form with dropdown menu, with future to add a picture from file or take a picture from mobile,
+  picture will be uploaded using imgBB API, after submitting item will be saved to database and user redirected to items page-->
 
 <div class="row">
   <form action="{{ url_for('insert_item')}}" method="POST" class="col s12" autocomplete="off">
@@ -29,7 +38,7 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">vertical_align_bottom</i>
         <select id="item_unit" name="item_unit" required>
-          <option value="" disabled selected>Choose unit of measurment:</option>
+          <option value="" disabled selected>Choose unit of measurement:</option>
           {% for un in units %}
           <option value="{{un.unit}}">{{un.unit}}</option>
           {% endfor %}
@@ -50,15 +59,15 @@
       </div>
     </div>
     <div class="row">
-    <div class="file-field input-field col s12 ">
-      <div class="btn blue-grey darken-3">
-        <span>add photo</span>
-        <input id="input_img" type="file" onchange="fileChange('item_img')" accept="image/*">
+      <div class="file-field input-field col s12 ">
+        <div class="btn blue-grey darken-3">
+          <span>add photo</span>
+          <input id="input_img" type="file" onchange="fileChange('item_img')" accept="image/*">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" id="item_img" name="item_img">
+        </div>
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" id="item_img" name="item_img" >
-      </div>
-    </div>
     </div>
     <h6>* required fields</h6>
     <div class="row center-align">
