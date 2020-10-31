@@ -74,7 +74,7 @@ def register():
 
 @app.route('/shopping_list')
 def shopping_list():
-    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find())
+    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find({"user": session["user"]}))
 
 
 
