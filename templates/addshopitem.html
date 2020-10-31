@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
 <h4>Add item or ingredient</h4>
+
+<!-- Form to select an item from database, on submit item will be added to shopping list,
+user will be redirected to shopping list  -->
+
 <div class="row">
   <form action="{{ url_for('insert_shop_item')}}" method="POST" class="col s12">
     <div class="row">
