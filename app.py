@@ -36,6 +36,7 @@ def login():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
+                    return render_template("shopping_list.html", lists=mongo.db.shopping_list.find({"user": user})
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -44,7 +45,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return redirect(url_for('shopping_list'))
+    return redirect(url_for('index'))
 
 
 # Registation function
