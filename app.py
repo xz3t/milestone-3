@@ -23,6 +23,8 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html")
 
+# Log In function
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -42,7 +44,8 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("index.html")
+    return redirect(url_for('shopping_list'))
+
 
 # Registation function
 
