@@ -1,8 +1,12 @@
 {% extends 'base.html' %} {% block content %}
+
+<!-- Items page display all items from database, user is presented with edit button to change any existing item
+    and an add button to create a new item-->
+
 <div class="row ">
     <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_item')}}"><i class="material-icons right">note_add</i>Add Item</a>
 </div>
-  
+<div class="row">
 <ul class="collapsible">
   {% for item in items %}
   <li>
@@ -11,11 +15,8 @@
         <i class="material-icons collapsable-icon">expand_more</i>
       </div>
       <div class="col s9">
-        
         <span class="text-item">{{item.item_name}}</span>
-        
         <img width="50" src="{{item.item_img}}" > 
-      
         <div class="position-abs">
           <a href="{{ url_for('edit_item', item_id=item._id)}}" class="waves-effect waves-light btn btn-my blue-grey lighten-3">edit</a>
         </div>
@@ -30,5 +31,5 @@
   </li>
   {% endfor %}
 </ul>
-
+</div>
 {% endblock %}
