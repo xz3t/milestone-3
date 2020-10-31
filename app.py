@@ -81,7 +81,7 @@ def shopping_list():
 # Shopping list page to be used on shopping,
 # will render shopping list that was created and aggregated arranged by shops.
 
-@app.route('/use_shopping_list')
+@app.route('/use_shopping_list/')
 def use_shopping_list():
     return render_template("use_shopping_list.html",
     aldi=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "ALDI"}),
@@ -282,15 +282,19 @@ def delete_shoping_item(list_id):
     '''
     Check if item is added from items or a recipe/group,
     if item is individual remove and inform user,
-    if item is part of recipe select and remove all items associated with it.
+    if item is part of recipe user will select if he want to delete just selected item or all recipe item is part off.
     '''
+    del_all = request.args.get('del_all')
     item = mongo.db.shopping_list.find_one({'_id': ObjectId(list_id)})
     if item['from_recipe'] == "--":
         mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
         flash('Item successfully removed!')
-    else :
-        mongo.db.shopping_list.remove({'from_recipe': item['from_recipe']})
-        flash('All items associated with recipe removed!') 
+    elif del_all == "1":
+        mongo.db.shopping_list.remove({"user": session["user"], 'from_recipe': item['from_recipe']})
+        flash('All items associated with recipe removed!')
+    else:
+        mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
+        flash('selected item successfully removed!')
     return redirect(url_for('shopping_list'))
 
 
