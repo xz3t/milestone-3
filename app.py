@@ -44,7 +44,7 @@ def login():
 
     return render_template("index.html")
 
-# Registation function added
+# Registation function
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -505,6 +505,14 @@ def submit_feedback():
     feedback.insert_one(request.form.to_dict())
     flash('Your feedback is submitted. Thank you!')
     return redirect(url_for('feedback'))
+
+
+# Function to log out user and remove cookie
+@app.route("/logout")
+def logout():
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("index"))
 
 
 if __name__ == '__main__':
