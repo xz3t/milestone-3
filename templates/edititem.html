@@ -2,6 +2,9 @@
 
 <h4>Edit Item</h4>
 
+<!--Edit item form, will be autocomplete with selected item by ID,
+    on submit user will be redirected to items page with a confirmation message-->
+
 <div class="row">
   <form action="{{ url_for('update_item', item_id=item._id) }}" method="POST" class="col s12">
     <div class="row">
