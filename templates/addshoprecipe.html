@@ -1,8 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
 <h4>Add Recipe</h4>
-<div class="row">
 
+<!-- Form to select an recipe/group from database, on submit recipe/group will broken down in individual items and added to shopping list,
+    user will be redirected to shopping list -->
+
+<div class="row">
   <form action="{{ url_for('insert_shop_recipe')}}" method="POST" class="col s12">
     <div class="row">
       <div class="input-field col s12">
