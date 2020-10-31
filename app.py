@@ -156,7 +156,8 @@ def insert_shop_item():
         'item_shop':item_shop,
         'item_category':item_category,
         'item_img':item_img,
-        'from_recipe': "--"
+        'from_recipe': "--",
+        'user' : session["user"]
     })
     flash('Item added to the shopping list!')
     return redirect(url_for('shopping_list'))
@@ -179,6 +180,7 @@ def insert_shop_recipe():
     prepare each ingredient from recipe to same format as individual item and add to shopping list,
     having all items same format will facilitate aggregation and combining similar items.
     '''
+    user = session["user"]
     selected_recipe = request.form.get('recipe_name')
     selected_recipe_get = mongo.db.recipes.find_one({"recipe_name": selected_recipe})
     item1_name = selected_recipe_get["recipe_ingredient_1"]
@@ -225,7 +227,8 @@ def insert_shop_recipe():
         'item_shop':item1_shop,
         'item_category':item1_category,
         'item_img':item1_img,
-        'from_recipe': selected_recipe
+        'from_recipe': selected_recipe,
+        'user' : user
     },
      {
         'item_name':item2_name, 
@@ -234,7 +237,8 @@ def insert_shop_recipe():
         'item_shop':item2_shop,
         'item_category':item2_category,
         'item_img':item2_img,
-        'from_recipe': selected_recipe
+        'from_recipe': selected_recipe,
+        'user' : user        
     },
      {
         'item_name':item3_name, 
@@ -243,7 +247,8 @@ def insert_shop_recipe():
         'item_shop':item3_shop,
         'item_category':item3_category,
         'item_img':item3_img,
-        'from_recipe': selected_recipe
+        'from_recipe': selected_recipe,
+        'user' : user
     },
      {
         'item_name':item4_name, 
@@ -252,7 +257,8 @@ def insert_shop_recipe():
         'item_shop':item4_shop,
         'item_category':item4_category,
         'item_img':item4_img,
-        'from_recipe': selected_recipe
+        'from_recipe': selected_recipe,
+        'user' : user
     },
      {
         'item_name':item5_name, 
@@ -261,7 +267,8 @@ def insert_shop_recipe():
         'item_shop':item5_shop,
         'item_category':item5_category,
         'item_img':item5_img,
-        'from_recipe': selected_recipe
+        'from_recipe': selected_recipe,
+        'user' : user
     }
     ])
     flash('All items from selected recipe added to the list!')
