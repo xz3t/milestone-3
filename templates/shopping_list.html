@@ -23,6 +23,56 @@
       </div>
       <div class="col s9">
         {{list.item_name}} - {{list.item_qty}} - {{list.item_unit}}
+        {% if list.from_recipe == "--" %}
+        <div class="position-abs">
+          <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
+            class="waves-effect waves-light btn modal-trigger tooltipped btn-my blue-grey lighten-4"
+            data-position="left"
+            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
+              class="material-icons">
+              delete_forever
+            </span></a>
+        </div>
+            <div class="collapsible-body ">
+      <span>
+        Category : {{list.item_category}} <br />
+        Shop: {{list.item_shop}} <br />
+        Added from : {{list.from_recipe}} </span>
+    </div>
+ 
+
+        {%else%}
+        <div class="position-abs">
+          <a href="#modal1" class="waves-effect waves-light btn modal-trigger tooltipped btn-my blue-grey lighten-4"
+            data-position="left"
+            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
+              class="material-icons">
+              delete_forever
+            </span></a>
+          <!-- Modal Trigger -->
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=1)}}"
+                class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
+                data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span> all
+                </span></a>
+              <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
+                class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
+                data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span> one
+
+                </span></a>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endif%}
+    </div>
+        <!--
         <div class="position-abs">
           <a href="{{url_for('delete_shoping_item', list_id=list._id)}}"
             class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
@@ -32,7 +82,7 @@
             </span></a>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="collapsible-body ">
       <span>
         Category : {{list.item_category}} <br />
