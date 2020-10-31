@@ -11,9 +11,7 @@
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list_temp')}}"><i
       class="material-icons right">shop</i>Use shopping list</a>
 </div>
-<div class="row ">
-  <h6>Delete warning: If an item is part of a recipe all items from that recipe will be removed!</h6>
-</div>
+
 <ul class="collapsible">
   {% for list in lists %}
   <li>
@@ -23,6 +21,9 @@
       </div>
       <div class="col s9">
         {{list.item_name}} - {{list.item_qty}} - {{list.item_unit}}
+
+        <!-- Check if item is not from a recipe than display delete button that will remove it from the list,
+        if item is a part of a recipe ask user if he want to delete just the item or all recipe its part off-->
         {% if list.from_recipe == "--" %}
         <div class="position-abs">
           <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
@@ -33,56 +34,39 @@
               delete_forever
             </span></a>
         </div>
-            <div class="collapsible-body ">
-      <span>
-        Category : {{list.item_category}} <br />
-        Shop: {{list.item_shop}} <br />
-        Added from : {{list.from_recipe}} </span>
-    </div>
- 
 
         {%else%}
         <div class="position-abs">
-          <a href="#modal1" class="waves-effect waves-light btn modal-trigger tooltipped btn-my blue-grey lighten-4"
+          <a href="#modal1" class="waves-effect waves-light btn modal-trigger btn-my blue-grey lighten-4"
             data-position="left"
             data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
               class="material-icons">
               delete_forever
             </span></a>
-          <!-- Modal Trigger -->
-
-          <!-- Modal Structure -->
+          <!-- Modal with option to delete one item or all recipe item is a part off -->
           <div id="modal1" class="modal">
             <div class="modal-content">
-              <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=1)}}"
-                class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
-                data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span> all
-                </span></a>
-              <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
-                class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
-                data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span> one
-
-                </span></a>
+              <h5 class="center-align">Attention!</h5>
+              <p> Item you want to delete was added as part of {{list.from_recipe}} recipe/group</p>
+              <p> You can delete just selected item or remove all items from the recipe/group it is a part off.</p>
+              <p class="center-align">
+                <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
+                  class="waves-effect waves-light btn btn-flat"><span> selected item
+                  </span></a>
+                <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=1)}}"
+                  class="waves-effect waves-light btn-flat"><span> all recipe/group
+                  </span></a>
+              </p>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+              <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
             </div>
           </div>
         </div>
+
       </div>
       {%endif%}
     </div>
-        <!--
-        <div class="position-abs">
-          <a href="{{url_for('delete_shoping_item', list_id=list._id)}}"
-            class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
-            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
-              class="material-icons">
-              delete_forever
-            </span></a>
-        </div>
-      </div>
-    </div>-->
     <div class="collapsible-body ">
       <span>
         Category : {{list.item_category}} <br />
