@@ -3,52 +3,54 @@
 
 <h4>Feedback</h4>
 
- <div class="row" >
-    <form class="col s12" action="{{ url_for('submit_feedback')}}" method="POST" >
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="text" name="name" id="name"  placeholder=" Full Name" required />
-          <label for="name">Full Name</label>
-        </div>
+<!--Feedback page with form to submit an feedback and display it at the bottom of the page -->
+
+<div class="row">
+  <form class="col s12" action="{{ url_for('submit_feedback')}}" method="POST">
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" name="name" id="name" placeholder=" Full Name" required />
+        <label for="name">Full Name</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="email" name="email" id="email"  placeholder="Email" required />
-          <label for="email">Email</label>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="email" name="email" id="email" placeholder="Email" required />
+        <label for="email">Email</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea 
-          name="message" 
-          id="message" 
-          class="materialize-textarea"></textarea>
-          <label for="message">Feedback</label>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea name="message" id="message" class="materialize-textarea"></textarea>
+        <label for="message">Feedback</label>
       </div>
-      <div class="row center-align">
+    </div>
+    <div class="row center-align">
       <button class="btn waves-effect waves-light blue-grey darken-3" type="submit" name="action">Send
         <i class="material-icons right">send</i>
       </button>
-      </div>
-    </form>
-  </div>
-  <hr>
-  <h4>Feedback Messages </h4>
-    {% for msg in feedback %}
-       <div class="row">
-        <div class="col s12 m12">
-          <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row ">
-              <div class="col s4 m2">
-                {{msg.name}} :
-              </div>
-              <div class="col s8 m10">
-                 <span class="wrap-feedback"> {{msg.message}} </span>
-              </div>
-            </div>
-          </div>
+    </div>
+  </form>
+</div>
+<hr>
+
+<!-- Display feedback messages from db-->
+
+<h4>Feedback Messages </h4>
+{% for msg in feedback %}
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row ">
+        <div class="col s4 m2">
+          {{msg.name}} :
         </div>
-      </div> 
-      {% endfor %}
+        <div class="col s8 m10">
+          <span class="wrap-feedback"> {{msg.message}} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}
