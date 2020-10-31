@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Manage shopping list page, allow user to add remove items and recipe/groups-->
+
 <div class="row ">
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_item')}}"><i
       class="material-icons right">note_add</i>Add Item</a>
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('add_shop_recipe')}}"><i
-      class="material-icons right">list</i>Add Recipe</a>
+      class="material-icons right">list</i>Add Recipe/Group</a>
   <a class="waves-effect waves-light btn blue-grey darken-3 " href="{{url_for('shopping_list_temp')}}"><i
-      class="material-icons right">shop</i>Use shoping list</a>
+      class="material-icons right">shop</i>Use shopping list</a>
 </div>
 <div class="row ">
   <h6>Delete warning: If an item is part of a recipe all items from that recipe will be removed!</h6>
@@ -24,9 +26,10 @@
         <div class="position-abs">
           <a href="{{url_for('delete_shoping_item', list_id=list._id)}}"
             class="waves-effect waves-light btn tooltipped btn-my blue-grey lighten-4" data-position="left"
-            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span class="material-icons">
-        delete_forever
-        </span></a>
+            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
+              class="material-icons">
+              delete_forever
+            </span></a>
         </div>
       </div>
     </div>
