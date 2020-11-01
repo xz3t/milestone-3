@@ -179,6 +179,7 @@ def insert_shop_recipe():
     '''
     Get recipe by name and fetch all information that recipe/group contains from recipes db,
     prepare each ingredient from recipe to same format as individual item and add to shopping list,
+    check if item exist before writing it to the list,
     having all items same format will facilitate aggregation and combining similar items.
     '''
     user = session["user"]
@@ -189,74 +190,17 @@ def insert_shop_recipe():
     item3_name = selected_recipe_get["recipe_ingredient_3"]
     item4_name = selected_recipe_get["recipe_ingredient_4"]
     item5_name = selected_recipe_get["recipe_ingredient_5"]
+    recipesop = mongo.db.shopping_list
     find_selected_item=mongo.db.items.find_one({"item_name": item1_name})
     if find_selected_item is None:
-        item1_unit=""
-        item1_qty=""
-        item1_shop=""
-        item1_category=""
-        item1_img=""
+        item = "none"
     else:
         item1_unit=find_selected_item["item_unit"]
         item1_qty=selected_recipe_get["recipe_ingredient_1_qty"]
         item1_shop=find_selected_item["item_shop"]
         item1_category=find_selected_item["item_category"]
         item1_img=find_selected_item["item_img"]
-    find_selected_item_2=mongo.db.items.find_one({"item_name": item2_name})
-    if find_selected_item_2 is None:
-        item2_unit=""
-        item2_qty=""
-        item2_shop=""
-        item2_category=""
-        item2_img=""
-    else:
-        item2_unit=find_selected_item_2["item_unit"]
-        item2_qty=selected_recipe_get["recipe_ingredient_2_qty"]
-        item2_shop=find_selected_item_2["item_shop"]
-        item2_category=find_selected_item_2["item_category"]
-        item2_img=find_selected_item_2["item_img"]
-    find_selected_item_3=mongo.db.items.find_one({"item_name": item3_name})
-    if find_selected_item_3 is None:
-        item3_unit=""
-        item3_qty=""
-        item3_shop=""
-        item3_category=""
-        item3_img=""
-    else:
-        item3_unit=find_selected_item_3["item_unit"]
-        item3_qty=selected_recipe_get["recipe_ingredient_3_qty"]
-        item3_shop=find_selected_item_3["item_shop"]
-        item3_category=find_selected_item_3["item_category"]
-        item3_img=find_selected_item_3["item_img"]
-    find_selected_item_4=mongo.db.items.find_one({"item_name": item4_name})
-    if find_selected_item_4 is None:
-        item4_unit=""
-        item4_qty=""
-        item4_shop=""
-        item4_category=""
-        item4_img=""
-    else:
-        item4_unit=find_selected_item_4["item_unit"]
-        item4_qty=selected_recipe_get["recipe_ingredient_4_qty"]
-        item4_shop=find_selected_item_4["item_shop"]
-        item4_category=find_selected_item_4["item_category"]
-        item4_img=find_selected_item_4["item_img"]
-    find_selected_item_5=mongo.db.items.find_one({"item_name": item5_name})
-    if find_selected_item_5 is None:
-        item5_unit=""
-        item5_qty=""
-        item5_shop=""
-        item5_category=""
-        item5_img=""
-    else:
-        item5_unit=find_selected_item_5["item_unit"]
-        item5_qty=selected_recipe_get["recipe_ingredient_5_qty"]
-        item5_shop=find_selected_item_5["item_shop"]
-        item5_category=find_selected_item_5["item_category"]
-        item5_img=find_selected_item_5["item_img"]
-    recipesop = mongo.db.shopping_list
-    recipesop.insert_many( [
-    {
+        recipesop.insert_one( {
         'item_name':item1_name, 
         'item_unit':item1_unit, 
         'item_qty':item1_qty,
@@ -265,8 +209,18 @@ def insert_shop_recipe():
         'item_img':item1_img,
         'from_recipe': selected_recipe,
         'user' : user
-    },
-     {
+        })
+
+    find_selected_item_2=mongo.db.items.find_one({"item_name": item2_name})
+    if find_selected_item_2 is None:
+        item = "none"
+    else:
+        item2_unit=find_selected_item_2["item_unit"]
+        item2_qty=selected_recipe_get["recipe_ingredient_2_qty"]
+        item2_shop=find_selected_item_2["item_shop"]
+        item2_category=find_selected_item_2["item_category"]
+        item2_img=find_selected_item_2["item_img"]
+        recipesop.insert_one( {
         'item_name':item2_name, 
         'item_unit':item2_unit, 
         'item_qty':item2_qty,
@@ -274,9 +228,19 @@ def insert_shop_recipe():
         'item_category':item2_category,
         'item_img':item2_img,
         'from_recipe': selected_recipe,
-        'user' : user        
-    },
-     {
+        'user' : user
+        })
+    
+    find_selected_item_3=mongo.db.items.find_one({"item_name": item3_name})
+    if find_selected_item_3 is None:
+        item = "none"
+    else:
+        item3_unit=find_selected_item_3["item_unit"]
+        item3_qty=selected_recipe_get["recipe_ingredient_3_qty"]
+        item3_shop=find_selected_item_3["item_shop"]
+        item3_category=find_selected_item_3["item_category"]
+        item3_img=find_selected_item_3["item_img"]
+        recipesop.insert_one( {
         'item_name':item3_name, 
         'item_unit':item3_unit, 
         'item_qty':item3_qty,
@@ -285,8 +249,17 @@ def insert_shop_recipe():
         'item_img':item3_img,
         'from_recipe': selected_recipe,
         'user' : user
-    },
-     {
+        })
+    find_selected_item_4=mongo.db.items.find_one({"item_name": item4_name})
+    if find_selected_item_4 is None:
+        item = "none"
+    else:
+        item4_unit=find_selected_item_4["item_unit"]
+        item4_qty=selected_recipe_get["recipe_ingredient_4_qty"]
+        item4_shop=find_selected_item_4["item_shop"]
+        item4_category=find_selected_item_4["item_category"]
+        item4_img=find_selected_item_4["item_img"]
+        recipesop.insert_one( {
         'item_name':item4_name, 
         'item_unit':item4_unit, 
         'item_qty':item4_qty,
@@ -295,8 +268,17 @@ def insert_shop_recipe():
         'item_img':item4_img,
         'from_recipe': selected_recipe,
         'user' : user
-    },
-     {
+        })
+    find_selected_item_5=mongo.db.items.find_one({"item_name": item5_name})
+    if find_selected_item_5 is None:
+        item = "none"
+    else:
+        item5_unit=find_selected_item_5["item_unit"]
+        item5_qty=selected_recipe_get["recipe_ingredient_5_qty"]
+        item5_shop=find_selected_item_5["item_shop"]
+        item5_category=find_selected_item_5["item_category"]
+        item5_img=find_selected_item_5["item_img"]
+        recipesop.insert_one( {
         'item_name':item5_name, 
         'item_unit':item5_unit, 
         'item_qty':item5_qty,
@@ -305,8 +287,7 @@ def insert_shop_recipe():
         'item_img':item5_img,
         'from_recipe': selected_recipe,
         'user' : user
-    }
-    ])
+        })
     flash('All items from selected recipe added to the list!')
     return redirect(url_for('shopping_list'))
 
