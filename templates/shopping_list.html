@@ -27,22 +27,14 @@
         {% if list.from_recipe == "--" %}
         <div class="position-abs">
           <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
-            class="waves-effect waves-light btn modal-trigger tooltipped btn-my blue-grey lighten-4"
-            data-position="left"
-            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
-              class="material-icons">
-              delete_forever
-            </span></a>
+            class="waves-effect waves-light btn modal-trigger btn-my red"
+            >del</a>
         </div>
 
         {%else%}
         <div class="position-abs">
-          <a href="#modal1" class="waves-effect waves-light btn modal-trigger btn-my blue-grey lighten-4"
-            data-position="left"
-            data-tooltip="If an item is part of a recipe all items from that recipe will be removed!"><span
-              class="material-icons">
-              delete_forever
-            </span></a>
+            <a href="#modal1"
+              class="waves-effect waves-light btn btn-my red modal-trigger">del</a>
           <!-- Modal with option to delete one item or all recipe item is a part off -->
           <div id="modal1" class="modal">
             <div class="modal-content">
@@ -61,9 +53,9 @@
             <div class="modal-footer">
               <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
             </div>
+            
           </div>
         </div>
-
       </div>
       {%endif%}
     </div>
