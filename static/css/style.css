@@ -16,6 +16,8 @@ header {
     padding-bottom: 10px;
 }
 
+/* styling for buttons */
+
 .btn {
     padding: 0 1em;
     margin: 0.5em 0.5em;
@@ -29,6 +31,7 @@ header {
   padding: 0 0.5em;
 }
 
+/* styling for collapsible */
 
 .position-abs {
   position: absolute;
@@ -54,13 +57,13 @@ header {
     text-decoration: line-through;
 }
 
-/* horisintal scrolmenu for catgories in saved shopping list*/
+/* horizontal scroll menu for categories in saved shopping list*/
 
 .scrollmenu {
   overflow: auto;
   white-space: nowrap;
+  display: none;
 }
-
 .scrollmenu a {
   display: inline-block;
   color: rgb(0, 0, 0);
@@ -69,35 +72,27 @@ header {
   text-decoration: none;
 
 }
-
 .scrollmenu a:hover {
   background-color: #777;
 }
-/* width */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
   border-radius: 10px;
 }
- 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888; 
   border-radius: 10px;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
 
 
-/* wrap feedback mesages */
+/* wrap feedback messages to not overflow the div*/
 
 .wrap-feedback {
     word-wrap: break-word;
