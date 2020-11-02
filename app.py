@@ -93,7 +93,25 @@ def use_shopping_list():
     ms=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "M&S"}),
     spar=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Spar"}))
 
+# Shopping list share route
 
+@ app.route('/share_shopping_list/<user>')
+def share_shopping_list(user):
+    user = user
+    return render_template("use_shopping_list.html",
+                           aldi=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "ALDI"}),
+                           dunnes=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "Dunnes"}),
+                           lidl=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "LIDL"}),
+                           tesco=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "Tesco"}),
+                           local=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "Local Shop"}),
+                           ms=mongo.db.shopping_list_temp.find(
+                               {"user": user, "item_shop": "M&S"}),
+                           spar=mongo.db.shopping_list_temp.find({"user": user, "item_shop": "Spar"}))
 
 # Function to create new aggregated list you will use on shopping
 
