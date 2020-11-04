@@ -23,33 +23,33 @@
                         class="material-icons ">shopping_basket</i></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('index')}}"><i class="fas fa-home menu-icon"></i> Home</a></li>
                     {% if session.user %}
-                    <li><a href="{{url_for('use_shopping_list')}}">Saved Shopping List</a></li>
-                    <li><a href="{{url_for('shopping_list')}}">Manage Shopping List</a></li>
-                    <li><a href="{{url_for('items')}}">Items</a></li>
-                    <li><a href="{{url_for('recipes')}}">Recipes</a></li>
-                    <li><a href="{{url_for('feedback')}}">Feedback</a></li>
-                    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                    <li><a href="{{url_for('use_shopping_list')}}"><i class="fas fa-save menu-icon"></i> Saved Shopping List</a></li>
+                    <li><a href="{{url_for('shopping_list')}}"><i class="fas fa-edit menu-icon"></i> Manage Shopping List</a></li>
+                    <li><a href="{{url_for('items')}}"><i class="fas fa-plus menu-icon"></i> Items</a></li>
+                    <li><a href="{{url_for('recipes')}}"><i class="fas fa-folder-plus menu-icon"></i> Recipes</a></li>
+                    <li><a href="{{url_for('feedback')}}"><i class="fas fa-comments menu-icon"></i> Feedback</a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="fas fa-sign-out-alt menu-icon"></i> Log Out</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt menu-icon"></i> Log In</a></li>
+                    <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus menu-icon"></i> Register</a></li>
                     {% endif %}
 
                 </ul>
                 <!-- mobile side navigation -->
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('index')}}"><i class="fas fa-home"></i> Home</a></li>
                     {% if session.user %}
-                    <li><a href="{{url_for('use_shopping_list')}}">Saved Shopping List</a></li>
-                    <li><a href="{{url_for('shopping_list')}}">Manage Shopping List</a></li>
-                    <li><a href="{{url_for('items')}}">Items</a></li>
-                    <li><a href="{{url_for('recipes')}}">Recipes</a></li>
-                    <li><a href="{{url_for('feedback')}}">Feedback</a></li>
-                    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                    <li><a href="{{url_for('use_shopping_list')}}"><i class="fas fa-save"></i> Saved Shopping List</a></li>
+                    <li><a href="{{url_for('shopping_list')}}"><i class="fas fa-edit"></i> Manage Shopping List</a></li>
+                    <li><a href="{{url_for('items')}}"><i class="fas fa-plus"></i> Items</a></li>
+                    <li><a href="{{url_for('recipes')}}"><i class="fas fa-folder-plus"></i> Recipes</a></li>
+                    <li><a href="{{url_for('feedback')}}"><i class="fas fa-comments"></i> Feedback</a></li>
+                    <li><a href="{{url_for('logout')}}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+                    <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a></li>
                     {% endif %}
                 </ul>
             </div>
