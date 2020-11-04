@@ -58,10 +58,10 @@
     <!-- section with flash message -->
     <section>
         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-        <div id="message" class="row">
-            <div class="col s6 offset-s3 center-align">
-                <h6 class="center-align text-shadow ">{{ message }}</h6>
-            </div>
+        <div class="container">
+             <div id="message" class="row materialert center-align">
+                <i class="material-icons">info_outline</i><span>{{ message }}</span>
+             </div>
         </div>
         {% endfor %} {% endif %} {% endwith %}
     </section>
@@ -102,8 +102,19 @@
             <i class="small material-icons">arrow_upward</i>
         </a>
     </div>
+    <!-- share modal  -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Share shopping list</h4>
+            <button data-clipboard-text="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{user}}">Copy me!</button>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://milankyncl.github.io/jquery-copy-to-clipboard/jquery.copy-to-clipboard.js"></script>
     <script src="{{url_for('static', filename='js/imgBB.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
