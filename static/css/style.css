@@ -16,6 +16,21 @@ header {
     padding-bottom: 10px;
 }
 
+/* nav logo and icons*/
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin: 10px 10px 0 0;
+    filter: invert(100%);
+}
+
+.menu-icon {
+    font-size: 1em;
+    opacity: 40%;
+
+}
+
 /* styling for buttons */
 
 .btn {
