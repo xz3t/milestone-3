@@ -119,3 +119,10 @@ header {
   position: absolute;
   right: 2em;
 }
+
+
+/* foooter */
+
+.footer-icon {
+    margin-right: 10px;
+}
