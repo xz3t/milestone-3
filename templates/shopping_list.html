@@ -37,22 +37,22 @@
             <a href="#modal1"
               class="waves-effect waves-light btn btn-my red modal-trigger">del</a>
           <!-- Modal with option to delete one item or all recipe item is a part off -->
-          <div id="modal1" class="modal">
-            <div class="modal-content">
+          <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-content center-align">
               <h5 class="center-align">Attention!</h5>
               <p> Item you want to delete was added as part of {{list.from_recipe}} recipe/group</p>
               <p> You can delete just selected item or remove all items from the recipe/group it is a part off.</p>
               <p class="center-align">
                 <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
-                  class="waves-effect waves-light btn btn-flat"><span> selected item
+                  class="waves-effect btn-flat"><span> selected item
                   </span></a>
                 <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=1)}}"
-                  class="waves-effect waves-light btn-flat"><span> all recipe/group
+                  class="waves-effect btn-flat"><span> all recipe/group
                   </span></a>
               </p>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+              <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
             </div>
             
           </div>
