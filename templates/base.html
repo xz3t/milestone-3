@@ -103,10 +103,13 @@
         </a>
     </div>
     <!-- share modal  -->
-    <div id="modal2" class="modal bottom-sheet">
+    <div id="clipboard-modal" class="modal bottom-sheet">
         <div class="modal-content center-align">
-            <h4>Share shopping list</h4>
-            <button data-clipboard-text="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{user}}">Copy me!</button>
+        <input type="text" value="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{user}}"
+          id="copy-link">
+        <a href="#!" class="waves-effect waves-grey btn-flat tooltipped" onclick="myFunction()" data-position="top"
+          data-delay="50" data-tooltip="Link copied to clipboard ! " > Copy to clipboard
+        </a>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -142,6 +145,16 @@
         };
         // fix tooltip to appear over materialize select input
         $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute', left: '50%', top: '3em' });
+
+          // copy to clipboard
+
+        function copyClipboard() {
+            var copyText = document.getElementById("copy-link");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+  
+         }
     </script>
 
 </body>
