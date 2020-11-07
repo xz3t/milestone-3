@@ -105,7 +105,7 @@
     <!-- share modal  -->
     <div id="clipboard-modal" class="modal bottom-sheet">
         <div class="modal-content center-align">
-        <input type="text" value="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{user}}"
+        <input type="text" value="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{session["user"]}}"
           id="copyLink">
         <a href="#!" class="waves-effect waves-grey btn-flat tooltipped" onclick="copyClipboard()" onmouseover="copyClipboard()" data-position="top"
           data-delay="50" data-tooltip="Link copied to clipboard ! " > Copy to clipboard
