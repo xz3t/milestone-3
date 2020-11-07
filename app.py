@@ -4,7 +4,7 @@ from flask import Flask, render_template, redirect, request, url_for, flash, ses
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from utils import check_and_insert
+from utils import check_and_insert, check_exist
 
 if os.path.exists("env.py"):
     import env
@@ -392,26 +392,11 @@ def update_recipe(recipe_id):
     find_selected_item_3 = mongo.db.items.find_one({"item_name": item3_name})
     find_selected_item_4 = mongo.db.items.find_one({"item_name": item4_name})
     find_selected_item_5 = mongo.db.items.find_one({"item_name": item5_name})
-    if find_selected_item is None:
-        item1_unit = ""
-    else:
-        item1_unit = find_selected_item["item_unit"]    
-    if find_selected_item_2 is None:
-        item2_unit = ""
-    else:
-        item2_unit = find_selected_item_2["item_unit"] 
-    if find_selected_item_3 is None:
-        item3_unit = ""
-    else:
-        item3_unit = find_selected_item_3["item_unit"]
-    if find_selected_item_4 is None:
-        item4_unit = ""
-    else:
-        item4_unit = find_selected_item_4["item_unit"]
-    if find_selected_item_5 is None:
-        item5_unit = ""
-    else:
-        item5_unit = find_selected_item_5["item_unit"]
+    item1_unit = check_exist(find_selected_item)
+    item2_unit = check_exist(find_selected_item_2)
+    item3_unit = check_exist(find_selected_item_3)
+    item4_unit = check_exist(find_selected_item_4)
+    item5_unit = check_exist(find_selected_item_5)
     recipe = mongo.db.recipes
     recipe.update( {'_id': ObjectId(recipe_id)},
     {
