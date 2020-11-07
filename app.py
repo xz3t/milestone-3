@@ -45,7 +45,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return redirect(url_for('login'))
+    return render_template("login.html")
 
 
 # Registation function
