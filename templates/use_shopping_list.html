@@ -3,7 +3,9 @@
 
 <!-- Shopping list page with aggregated items sorted by shops,
   with added jquery to show/hide categories and mark items that are bought. -->
-
+<div class="row">
+  <a class="waves-effect waves-light btn blue-grey darken-3 modal-trigger " href="#clipboard-modal"><i class="material-icons right">share</i>Share</a>
+</div>
 {%if aldi.count() > 0%}
 <a class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('aldi')">ALDI </a><a
   class="waves-effect waves-grey btn-flat" href="#" onclick="shopToggle('aldi_cat')">Categories </a>
