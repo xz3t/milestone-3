@@ -74,6 +74,10 @@ header {
   padding: 0 0.5em;
 }
 
+.btn-icon{
+  font-size: 16px;
+  
+}
 /* styling for collapsible */
 
 .position-abs {
