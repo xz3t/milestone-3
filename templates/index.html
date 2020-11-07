@@ -1,8 +1,30 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<h4>welcome</h4>
+<h4>Weekly Shopping List</h4>
 
-
+<div class="row">
+  <div class="col-9">
+    <div class="card-panel">
+      <p>Welcome!</p>
+      <span>
+        With this hepfull tool you can add items and recipe/groups of items,
+        snap a photo in the shop of your desired product or add an picture from
+        your tablet or pc. Create shopping list and share it with your
+        designated shopper. Sign up if you are new here or Log in and start
+        creating youre shopping list.
+      </span>
+      <div class="row">
+      <a href="{{ url_for('register') }}" class="col s12 btn-large blue-grey darken-3">
+                    Register <i class="fas fa-sign-in-alt"></i></a>
+      </div>
+      <div class="row">
+        <a href="{{ url_for('login') }}" class="col s12 btn-large blue-grey darken-3">
+          Log In <i class="fas fa-sign-in-alt"></i>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 {% endblock %}
