@@ -28,16 +28,37 @@
       </div>
       <div class="collapsible-body">
         <ul>
-          <li> {{recipe.recipe_ingredient_1}} - {{recipe.recipe_ingredient_1_qty}} - {{recipe.recipe_ingredient_1_unit}}
+        {%if recipe.recipe_ingredient_1 == None %}
+            <li></li>
+        {% else %}
+          <li> {{recipe.recipe_ingredient_1}} | {{recipe.recipe_ingredient_1_qty}} <span class="unit">{{recipe.recipe_ingredient_1_unit}}</span>
           </li>
-          <li> {{recipe.recipe_ingredient_2}} - {{recipe.recipe_ingredient_2_qty}} - {{recipe.recipe_ingredient_2_unit}}
+        {%endif%}
+        {%if recipe.recipe_ingredient_2 == None %}
+            <li></li>
+        {% else %}
+          <li> {{recipe.recipe_ingredient_2}} | {{recipe.recipe_ingredient_2_qty}} <span class="unit"> {{recipe.recipe_ingredient_2_unit}}</span>
           </li>
-          <li> {{recipe.recipe_ingredient_3}} - {{recipe.recipe_ingredient_3_qty}} - {{recipe.recipe_ingredient_3_unit}}
+        {%endif%}
+        {%if recipe.recipe_ingredient_3 == None %} 
+            <li></li>
+        {%else%} 
+          <li> {{recipe.recipe_ingredient_3}} | {{recipe.recipe_ingredient_3_qty}} <span class="unit"> {{recipe.recipe_ingredient_3_unit}}</span>
           </li>
-          <li> {{recipe.recipe_ingredient_4}} - {{recipe.recipe_ingredient_4_qty}} - {{recipe.recipe_ingredient_4_unit}}
+        {%endif%}
+        {%if recipe.recipe_ingredient_4 == None %} 
+            <li></li>
+        {%else%}
+          <li> {{recipe.recipe_ingredient_4}} | {{recipe.recipe_ingredient_4_qty}} <span class="unit"> {{recipe.recipe_ingredient_4_unit}}</span>
           </li>
-          <li> {{recipe.recipe_ingredient_5}} - {{recipe.recipe_ingredient_5_qty}} - {{recipe.recipe_ingredient_5_unit}}
+        {%endif%}
+        {%if recipe.recipe_ingredient_5 == None %} 
+            <li></li>
+        {%else%}
+          <li> {{recipe.recipe_ingredient_5}} | {{recipe.recipe_ingredient_5_qty}} <span class="unit"> {{recipe.recipe_ingredient_5_unit}}</span>
           </li>
+        {%endif%}
+        
         </ul>
         <span>
           {{recipe.recipe_comment}} <br /></span>
