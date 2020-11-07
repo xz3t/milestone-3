@@ -21,7 +21,7 @@
         <i class="material-icons">expand_more</i>
       </div>
       <div class="col s9">
-        {{list.item_name}} - {{list.item_qty}} - {{list.item_unit}}
+        {{list.item_name}} | {{list.item_qty}} <span class="unit">{{list.item_unit}}</span>
 
         <!-- Check if item is not from a recipe than display delete button that will remove it from the list,
         if item is a part of a recipe ask user if he want to delete just the item or all recipe its part off-->
