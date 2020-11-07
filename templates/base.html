@@ -106,8 +106,8 @@
     <div id="clipboard-modal" class="modal bottom-sheet">
         <div class="modal-content center-align">
         <input type="text" value="https://weekly-shopping-app.herokuapp.com/share_shopping_list/{{user}}"
-          id="copy-link">
-        <a href="#!" class="waves-effect waves-grey btn-flat tooltipped" onclick="myFunction()" data-position="top"
+          id="copyLink">
+        <a href="#!" class="waves-effect waves-grey btn-flat tooltipped" onclick="copyClipboard()" onmouseover="copyClipboard()" data-position="top"
           data-delay="50" data-tooltip="Link copied to clipboard ! " > Copy to clipboard
         </a>
         </div>
@@ -149,7 +149,7 @@
           // copy to clipboard
 
         function copyClipboard() {
-            var copyText = document.getElementById("copy-link");
+            var copyText = document.getElementById("copyLink");
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
