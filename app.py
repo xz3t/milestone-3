@@ -17,14 +17,12 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
-# Index page with welcome screen and navigation menu
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
 
-# Log In function
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -34,10 +32,10 @@ def login():
 
         if existing_user:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {} ".format(request.form.get("username")))
-                    return redirect(url_for('shopping_list'))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {} ".format(request.form.get("username")))
+                return redirect(url_for('shopping_list'))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -48,8 +46,6 @@ def login():
 
     return render_template("login.html")
 
-
-# Registation function
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -71,30 +67,29 @@ def register():
         flash("Registration Successful!")
     return render_template("register.html")
 
-# Shopping list managing page that displays all the items,
-# users can add items, recipes/groups and remove them
 
 @app.route('/shopping_list')
 def shopping_list():
     return render_template("shopping_list.html", lists=mongo.db.shopping_list.find({"user": session["user"]}))
 
 
-
-# Shopping list page to be used on shopping,
-# will render shopping list that was created and aggregated arranged by shops.
-
 @app.route('/use_shopping_list/')
 def use_shopping_list():
     return render_template("use_shopping_list.html",
-    aldi=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "ALDI"}),
-    dunnes=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Dunnes"}),
-    lidl=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "LIDL"}),
-    tesco=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Tesco"}),
-    local=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Local Shop"}),
-    ms=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "M&S"}),
-    spar=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Spar"}))
+                           aldi=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "ALDI"}),
+                           dunnes=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "Dunnes"}),
+                           lidl=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "LIDL"}),
+                           tesco=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "Tesco"}),
+                           local=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "Local Shop"}),
+                           ms=mongo.db.shopping_list_temp.find(
+                               {"user": session["user"], "item_shop": "M&S"}),
+                           spar=mongo.db.shopping_list_temp.find({"user": session["user"], "item_shop": "Spar"}))
 
-# Shopping list share route
 
 @ app.route('/share_shopping_list/<user>')
 def share_shopping_list(user):
@@ -114,7 +109,6 @@ def share_shopping_list(user):
                                {"user": user, "item_shop": "M&S"}),
                            spar=mongo.db.shopping_list_temp.find({"user": user, "item_shop": "Spar"}))
 
-# Function to create new aggregated list you will use on shopping
 
 @app.route('/shopping_list_temp')
 def shopping_list_temp():
@@ -124,7 +118,7 @@ def shopping_list_temp():
     second list will hold all items information from what recipe is added and converted to float value added qty,
     when list is prepared we will remove all previous collection and write new one to database.
     '''
-    shop_list=mongo.db.shopping_list.find({"user": session["user"]})
+    shop_list = mongo.db.shopping_list.find({"user": session["user"]})
     shop_list_aggregate = []
     shop_list_aggregate_key = []
     for item in shop_list:
@@ -132,8 +126,10 @@ def shopping_list_temp():
         if key in shop_list_aggregate_key:
             for item_agg in shop_list_aggregate:
                 if item_agg["item_name"] == key:
-                    item_agg["item_qty"] = float(item_agg["item_qty"]) + float(item["item_qty"])
-                    item_agg["from_recipe"] = item_agg["from_recipe"] + ", " + item["from_recipe"]
+                    item_agg["item_qty"] = float(
+                        item_agg["item_qty"]) + float(item["item_qty"])
+                    item_agg["from_recipe"] = item_agg["from_recipe"] + \
+                        ", " + item["from_recipe"]
         else:
             shop_list_aggregate.append(item)
             shop_list_aggregate_key.append(item["item_name"])
@@ -144,18 +140,14 @@ def shopping_list_temp():
     return redirect(url_for('use_shopping_list'))
 
 
-# Render page for selecting items from database and adding a qty value to the shopping list
-
 @app.route('/add_shop_item')
 def add_shop_item():
     return render_template("addshopitem.html",
-        items = mongo.db.items.find(),
-        )
+                           items=mongo.db.items.find(),
+                           )
 
 
-# Insert selected item to shopping list
-
-@app.route('/insert_shop_item/', methods=['GET','POST'])
+@app.route('/insert_shop_item/', methods=['GET', 'POST'])
 def insert_shop_item():
     '''
     Get selected item name and fetch all information about the item from items db,
@@ -168,32 +160,29 @@ def insert_shop_item():
     item_unit = find_selected["item_unit"]
     item_img = find_selected["item_img"]
     itemsop = mongo.db.shopping_list
-    itemsop.insert_one( 
-    {
-        'item_name':request.form.get('item_name'), 
-        'item_unit':item_unit,
-        'item_qty':request.form.get('item_qty'),
-        'item_shop':item_shop,
-        'item_category':item_category,
-        'item_img':item_img,
-        'from_recipe': "--",
-        'user' : session["user"]
-    })
+    itemsop.insert_one(
+        {
+            'item_name': request.form.get('item_name'),
+            'item_unit': item_unit,
+            'item_qty': request.form.get('item_qty'),
+            'item_shop': item_shop,
+            'item_category': item_category,
+            'item_img': item_img,
+            'from_recipe': "--",
+            'user': session["user"]
+        })
     flash('Item added to the shopping list!')
     return redirect(url_for('shopping_list'))
 
-# Render a page for selecting an recipe/group from database
 
 @app.route('/add_shop_recipe')
 def add_shop_recipe():
     return render_template("addshoprecipe.html",
-        recipes = mongo.db.recipes.find()
-        )
+                           recipes=mongo.db.recipes.find()
+                           )
 
 
-# Insert selected recipe/group to shopping list
-
-@app.route('/insert_shop_recipe/', methods=['GET','POST'])
+@app.route('/insert_shop_recipe/', methods=['GET', 'POST'])
 def insert_shop_recipe():
     '''
     Get recipe by name and fetch all information that recipe/group contains from recipes db,
@@ -203,7 +192,8 @@ def insert_shop_recipe():
     '''
     user = session["user"]
     selected_recipe = request.form.get('recipe_name')
-    selected_recipe_get = mongo.db.recipes.find_one({"recipe_name": selected_recipe})
+    selected_recipe_get = mongo.db.recipes.find_one(
+        {"recipe_name": selected_recipe})
     item1_name = selected_recipe_get["recipe_ingredient_1"]
     item2_name = selected_recipe_get["recipe_ingredient_2"]
     item3_name = selected_recipe_get["recipe_ingredient_3"]
@@ -219,8 +209,6 @@ def insert_shop_recipe():
     return redirect(url_for('shopping_list'))
 
 
-# Function will delete selected item
-
 @app.route('/delete_shoping_item/<list_id>')
 def delete_shoping_item(list_id):
     '''
@@ -234,7 +222,8 @@ def delete_shoping_item(list_id):
         mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
         flash('Item successfully removed!')
     elif del_all == "1":
-        mongo.db.shopping_list.remove({"user": session["user"], 'from_recipe': item['from_recipe']})
+        mongo.db.shopping_list.remove(
+            {"user": session["user"], 'from_recipe': item['from_recipe']})
         flash('All items associated with recipe removed!')
     else:
         mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
@@ -242,24 +231,18 @@ def delete_shoping_item(list_id):
     return redirect(url_for('shopping_list'))
 
 
-# Render page with all items in database
-
 @app.route('/items')
 def items():
     return render_template("items.html", items=mongo.db.items.find().sort("item_name"))
 
 
-# Render add item page with dropdowns to help and guide user to input correct information
-
 @app.route('/add_item')
 def add_item():
-    return render_template("additem.html", 
-        categories=mongo.db.items_categories.find(), 
-        shops=mongo.db.items_shops.find(),
-        units=mongo.db.items_unit.find())
+    return render_template("additem.html",
+                           categories=mongo.db.items_categories.find(),
+                           shops=mongo.db.items_shops.find(),
+                           units=mongo.db.items_unit.find())
 
-
-# Function to insert an item
 
 @app.route('/insert_item', methods=['POST'])
 def insert_item():
@@ -271,7 +254,8 @@ def insert_item():
     error = None
     items = mongo.db.items
     item_name = request.form.get('item_name')
-    exist = mongo.db.items.find_one({"item_name": re.compile(item_name, re.IGNORECASE)})
+    exist = mongo.db.items.find_one(
+        {"item_name": re.compile(item_name, re.IGNORECASE)})
     if exist is None:
         flash('Item successfully added!')
         items.insert_one(request.form.to_dict())
@@ -280,8 +264,6 @@ def insert_item():
         error = 'Item with this name is already in database. please choice another name or edit existing item.'
     return render_template("additem.html", error=error, categories=mongo.db.items_categories.find(), shops=mongo.db.items_shops.find(), units=mongo.db.items_unit.find())
 
-
-# Render edit item page by id of selected item
 
 @app.route('/edit_item/<item_id>')
 def edit_item(item_id):
@@ -294,12 +276,10 @@ def edit_item(item_id):
     all_shops = mongo.db.items_shops.find()
     all_units = mongo.db.items_unit.find()
     return render_template('edititem.html', item=the_item,
-        categories=all_categories,
-        shops=all_shops,
-        units=all_units)
+                           categories=all_categories,
+                           shops=all_shops,
+                           units=all_units)
 
-
-# Function to update an item
 
 @app.route('/update_item/<item_id>', methods=["POST"])
 def update_item(item_id):
@@ -308,57 +288,49 @@ def update_item(item_id):
     return a flash message to user with success
     '''
     item = mongo.db.items
-    item.update( {'_id': ObjectId(item_id)},
-    {
-        'item_name':request.form.get('item_name'),
-        'item_category':request.form.get('item_category'),
+    item.update({'_id': ObjectId(item_id)},
+                {
+        'item_name': request.form.get('item_name'),
+        'item_category': request.form.get('item_category'),
         'item_shop': request.form.get('item_shop'),
         'item_unit': request.form.get('item_unit'),
-        'item_img':request.form.get('item_img')
+        'item_img': request.form.get('item_img')
     })
     flash('Item updated successfully!')
     return redirect(url_for('items'))
 
 
-# Render page with all recipes/groups in database
-
 @app.route('/recipes')
 def recipes():
-    return render_template("recipes.html", 
-        recipes=mongo.db.recipes.find().sort("recipe_name"))    
+    return render_template("recipes.html",
+                           recipes=mongo.db.recipes.find().sort("recipe_name"))
 
-
-# Render the page where user will create name for his recipe/group
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template("addrecipe.html")    
+    return render_template("addrecipe.html")
 
-
-# Render edit recipe/group page by id for selected recipe
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     '''
     Get data by selected id and render a page with 5 dropdown menu containing all items in db,
     item are displayed sorted to easier navigate thru them when selecting
-    '''    
+    '''
     the_item1 = mongo.db.items.find()
     the_item2 = mongo.db.items.find()
     the_item3 = mongo.db.items.find()
     the_item4 = mongo.db.items.find()
     the_item5 = mongo.db.items.find()
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('editrecipe.html', 
-            recipe=the_recipe,
-            item1=the_item1.sort("item_name"),
-            item2=the_item2.sort("item_name"),
-            item3=the_item3.sort("item_name"),
-            item4=the_item4.sort("item_name"),
-            item5=the_item5.sort("item_name"))
+    return render_template('editrecipe.html',
+                           recipe=the_recipe,
+                           item1=the_item1.sort("item_name"),
+                           item2=the_item2.sort("item_name"),
+                           item3=the_item3.sort("item_name"),
+                           item4=the_item4.sort("item_name"),
+                           item5=the_item5.sort("item_name"))
 
-
-# Function to insert an recipe
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -371,8 +343,6 @@ def insert_recipe():
     flash('Recipe created successfully! Edit your new recipe to add items.')
     return redirect(url_for('recipes'))
 
-
-# Function to update an recipe
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -398,32 +368,30 @@ def update_recipe(recipe_id):
     item4_unit = check_exist(find_selected_item_4)
     item5_unit = check_exist(find_selected_item_5)
     recipe = mongo.db.recipes
-    recipe.update( {'_id': ObjectId(recipe_id)},
-    {
-        'recipe_name':request.form.get('recipe_name'), 
-        'recipe_ingredient_1':request.form.get('recipe_ingredient_1'),
-        'recipe_ingredient_1_qty':request.form.get('recipe_ingredient_1_qty'),
+    recipe.update({'_id': ObjectId(recipe_id)},
+                  {
+        'recipe_name': request.form.get('recipe_name'),
+        'recipe_ingredient_1': request.form.get('recipe_ingredient_1'),
+        'recipe_ingredient_1_qty': request.form.get('recipe_ingredient_1_qty'),
         'recipe_ingredient_1_unit': item1_unit,
-        'recipe_ingredient_2':request.form.get('recipe_ingredient_2'),
-        'recipe_ingredient_2_qty':request.form.get('recipe_ingredient_2_qty'),
+        'recipe_ingredient_2': request.form.get('recipe_ingredient_2'),
+        'recipe_ingredient_2_qty': request.form.get('recipe_ingredient_2_qty'),
         'recipe_ingredient_2_unit': item2_unit,
-        'recipe_ingredient_3':request.form.get('recipe_ingredient_3'),
-        'recipe_ingredient_3_qty':request.form.get('recipe_ingredient_3_qty'),
+        'recipe_ingredient_3': request.form.get('recipe_ingredient_3'),
+        'recipe_ingredient_3_qty': request.form.get('recipe_ingredient_3_qty'),
         'recipe_ingredient_3_unit': item3_unit,
-        'recipe_ingredient_4':request.form.get('recipe_ingredient_4'),
-        'recipe_ingredient_4_qty':request.form.get('recipe_ingredient_4_qty'),
+        'recipe_ingredient_4': request.form.get('recipe_ingredient_4'),
+        'recipe_ingredient_4_qty': request.form.get('recipe_ingredient_4_qty'),
         'recipe_ingredient_4_unit': item4_unit,
-        'recipe_ingredient_5':request.form.get('recipe_ingredient_5'),
-        'recipe_ingredient_5_qty':request.form.get('recipe_ingredient_5_qty'),
+        'recipe_ingredient_5': request.form.get('recipe_ingredient_5'),
+        'recipe_ingredient_5_qty': request.form.get('recipe_ingredient_5_qty'),
         'recipe_ingredient_5_unit': item5_unit,
-        'recipe_img':request.form.get('recipe_img'),
+        'recipe_img': request.form.get('recipe_img'),
 
     })
     flash('Recipe updated successfully!')
     return redirect(url_for('recipes'))
 
-
-# Function to delete an recipe by id
 
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
@@ -432,15 +400,11 @@ def delete_recipe(recipe_id):
     return redirect(url_for('recipes'))
 
 
-# Render Feedback page
-
 @app.route('/feedback')
 def feedback():
     return render_template("feedback.html",
-    feedback = mongo.db.feedback.find())
+                           feedback=mongo.db.feedback.find())
 
-
-# Function to submit feedback and return flash success message
 
 @app.route('/submit_feedback', methods=["POST"])
 def submit_feedback():
@@ -450,7 +414,6 @@ def submit_feedback():
     return redirect(url_for('feedback'))
 
 
-# Function to log out user and remove cookie
 @app.route("/logout")
 def logout():
     flash("You have been logged out")
