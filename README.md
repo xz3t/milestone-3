@@ -402,7 +402,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 ### Known Bugs
 
-- at the moment all known bugs are fixed
+- materialbox don't work properly on saved shopping list, some images will not open in full screen. Works in the top section of the page. on scroll down to the bottom images doesnt work.
 
 ### Features to implement
 
@@ -425,7 +425,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
     - Debug: False; 
     - IP: 0.0.0.0; 
     - PORT: 5000;
-    - MONGO_URI: mongodb+srv://<username>:<password>@myfirstcluster.kmobf.mongodb.net/weeklyShopping?retryWrites=true&w=majority;
+    - MONGO_URI: mongodb+srv://username:password@myfirstcluster.kmobf.mongodb.net/weeklyShopping?retryWrites=true&w=majority;
     - SECRET_KEY: <your_secret_key>.
 8. Navigate back Deploy section, click on the Deploy Branch, you can enable Automatic Deploy, in automatic mode every push to GitHub wil automatically the latest version.
 9. Now app is deployed on Heroku, you can open and view it by clicking on the Open app on top of the page.
