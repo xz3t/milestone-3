@@ -55,27 +55,27 @@ The scope of this milestone project is to create a fully responsive website with
 ## Features
 
 ### Main page
-Welcome page with a quick greeting message and Register and LogIn links.
+- Welcome page with a quick greeting message and Register and LogIn links.
 
 ### Navigation bar
-Before user will log in will display: Home , Log In and Register.
-After user has logged in will have access to the rest of the menu links.
+- Before user will log in will display: Home , Log In and Register.
+- After user has logged in will have access to the rest of the menu links.
 
 ### Footer
-Contain a short description and links to Feedback and GitHub page with the project.
+- Contain a short description and links to Feedback and GitHub page with the project.
 
 ### Register (Create)
-Form on the page allows user to register an account with username/password that will get created in database with condition username is not already taken.
-User will receive an flash message if user is already taken.
+- Form on the page allows user to register an account with username/password that will get created in database with condition username is not already taken.
+- User will receive an flash message if user is already taken.
 
 ### Log In (Read)
-Form on the page allows user to log in into earlier created account.
-User will receive an flash message if user and/or password will not match user in database.
-After log in user will be redirected to "Manage Shopping List" section and greeted by username used on login.
+- Form on the page allows user to log in into earlier created account.
+- User will receive an flash message if user and/or password will not match user in database.
+- After log in user will be redirected to "Manage Shopping List" section and greeted by username used on login.
 
 ### Items (Read)
-This section is a list off all items in the database sorted in alphabetically.
-User can create new Item or Edit an existing one.
+- This section is a list off all items in the database sorted in alphabetically.
+- User can create new Item or Edit an existing one.
 
 ### Add Item (Create, Read)
 In this section user is presented with: 
@@ -87,9 +87,9 @@ Item name can be entered in any case as it will be searched in database with IGN
 User will receive an flash message if name is already used, when successful user will be redirected back to Items section with a success message.
 
 ### Edit Item (Read, Update)
-Section inherits Add Item structure and functionality.
-On submit Item will be overwritten with updated information into database.
-User will receive an flash message with success and will be redirected back to Items section.
+- Section inherits Add Item structure and functionality.
+- On submit Item will be overwritten with updated information into database.
+- User will receive an flash message with success and will be redirected back to Items section.
 
 ### Recipe (Read, Delete)
 This section is a list with all recipes in the database sorted alphabetically.
@@ -100,8 +100,8 @@ User is presented with :
 - delete button to remove recipe/group
 
 ### Add Recipe/Group of products (Create)
-This section allows user to create a name for recipe/group with further instruction to edit it in order to add items.
-User will receive an flash message in if name already exist and will stay on same page,
+- This section allows user to create a name for recipe/group with further instruction to edit it in order to add items.
+- User will receive an flash message in if name already exist and will stay on same page,
 when name will unique and successfully created user will be redirected to Recipes section and receive a flash message with instruction to edit created recipe/group in order to add items.
 
 ### Edit Recipe/Group of products (Read, Update)
@@ -137,6 +137,118 @@ User is presented with:
 - feedback form that contains name/email and feedback message
 - on the bottom are displayed feedback messages except email information.
 
+## Collections Data Structure
+
+#### users
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| username        | string      |
+| password        | string      |
+
+
+#### items
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| item_name       | string      |
+| item_category   | string      |
+| item_shop       | string      |
+| item_unit       | string      |
+| item_img        | string      |
+
+
+#### items_categories
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| category_name   | string      |
+
+
+#### items_shops
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| shop_name       | string      |
+| shop_logo       | string      |
+
+
+#### items_unit
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| unit            | string      |
+
+
+#### recipes
+
+| _Key in DB_              | _Data type_ |
+| ------------------------ | ----------- |
+| \_id                     | ObjectId    |
+| recipe_name              | string      |
+| recipe_ingredient_1      | string      |
+| recipe_ingredient_1_qty  | string      |
+| recipe_ingredient_1_unit | string      |
+| recipe_ingredient_2      | string      |
+| recipe_ingredient_2_qty  | string      |
+| recipe_ingredient_2_unit | string      |
+| recipe_ingredient_3      | string      |
+| recipe_ingredient_3_qty  | string      |
+| recipe_ingredient_3_unit | string      |
+| recipe_ingredient_4      | string      |
+| recipe_ingredient_4_qty  | string      |
+| recipe_ingredient_4_unit | string      |
+| recipe_ingredient_5      | string      |
+| recipe_ingredient_5_qty  | string      |
+| recipe_ingredient_5_unit | string      |
+| recipe_img               | string      |
+
+
+#### shopping_list
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| item_name       | string      |
+| item_unit       | string      |
+| item_qty        | string      |
+| item_shop       | string      |
+| item_category   | string      |
+| item_img        | string      |
+| from_recipe     | string      |
+| user            | string      |
+
+
+#### shopping_list_temp
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| item_name       | string      |
+| item_unit       | string      |
+| item_qty        | string      |
+| item_shop       | string      |
+| item_category   | string      |
+| item_img        | string      |
+| from_recipe     | string      |
+| user            | string      |
+
+
+#### feedback
+
+| _Key in DB_     | _Data type_ |
+| --------------- | ----------- |
+| \_id            | ObjectId    |
+| name            | string      |
+| email           | string      |
+| fmessage        | string      |
+
+
 ## Technologies Used
 
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
@@ -153,15 +265,17 @@ User is presented with:
     - GitHub is used to store the projects code after being pushed from Git.
 3. [Materialize](https://materializecss.com/about.html)
     - Created by Google, Material Design is a design language that combines the classic principles of successful design along with innovation and technology.
-4. [Font Awesome:](https://fontawesome.com/)
+4. [imgBB API:](https://api.imgbb.com/)
+    - Imgbb's API allows to upload pictures to host on the server.
+5. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-5. [JQuery](https://en.wikipedia.org/wiki/JQuery)
+6. [JQuery](https://en.wikipedia.org/wiki/JQuery)
     - JavaScript library designed to simplify HTML DOM tree traversal and manipulation, event handling, css animation.
-6. [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
+7. [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
     - Flask is a micro web framework written in Python.
-7. [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
+8. [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
     - Jinja web template engine for the Python programming language
-8. [Heroku](https://en.wikipedia.org/wiki/Heroku)
+9. [Heroku](https://en.wikipedia.org/wiki/Heroku)
     - Heroku is a cloud platform as a service (PaaS) supporting several programming languages, including Python used in this project.
 
 
@@ -288,22 +402,40 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 ### Known Bugs
 
+- at the moment all known bugs are fixed
 
+### Features to implement
 
+- Add on main page total registered users and items/recipes in database.
+- In Items and Recipes on "Add photo" add a delay in form of loader so user don't click on submit form before imgBB will receive response and fill in with correct link.
+- In Saved Shopping list, move marked as bought items to bottom of the page or hide when marked.
+- Add search function to items and recipes
 
 ## Deployment
 
-### Heroku Pages
+### Heroku with Github integration
+
+1. Create a Procfile with the terminal command echo web: python app.py > Procfile.
+2. Create a requirements.txt: pip3 freeze --local > requirements.txt.
+3. Push and commit requirements.txt and Procfile
+4. On the Heroku app page, click on the Deploy, find Deployment method and select GitHub
+5. In search for repository to connect to select desired repo-name and link it to Heroku.
+6. On the Heroku app page, click on Settings -> Reveal Config Vars
+7. Set the Config Vars in the Settings: 
+    - Debug: False; 
+    - IP: 0.0.0.0; 
+    - PORT: 5000;
+    - MONGO_URI: mongodb+srv://<username>:<password>@myfirstcluster.kmobf.mongodb.net/weeklyShopping?retryWrites=true&w=majority;
+    - SECRET_KEY: <your_secret_key>.
+8. Navigate back Deploy section, click on the Deploy Branch, you can enable Automatic Deploy, in automatic mode every push to GitHub wil automatically the latest version.
+9. Now app is deployed on Heroku, you can open and view it by clicking on the Open app on top of the page.
 
 
-
-## Credits
-
-   
     
 ### Media
 
--   
+-   Pictures for items were taken from LIDL/ALDI/Tesco websites.
+-   Logo and icon [Link](https://icons8.com/icons/set/cart)
 
 ### Acknowledgements
 
