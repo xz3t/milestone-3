@@ -66,7 +66,7 @@ def register():
 
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-    return render_template("register.html")
+    return render_template("login.html")
 
 
 @app.route('/shopping_list')
