@@ -1,5 +1,5 @@
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -20,9 +20,11 @@ h4 {
     text-shadow: 1px 1px rgba(38, 50, 56, 0.404);
     margin-left: 20px;
 }
+
+
 /* flash message*/
 
-.materialert{
+.materialert {
     position: relative;
     min-width: 150px;
     padding: 15px;
@@ -31,22 +33,15 @@ h4 {
     border: 1px solid transparent;
     border-radius: 4px;
     transition: all 0.1s linear;
-    webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-
 }
 
-.materialert .material-icons{
+.materialert .material-icons {
     margin-right: 10px;
 }
+
 
 /* nav logo and icons*/
 
@@ -60,8 +55,8 @@ h4 {
 .menu-icon {
     font-size: 1em;
     opacity: 40%;
-
 }
+
 
 /* styling for buttons */
 
@@ -71,27 +66,28 @@ h4 {
 }
 
 .btn-my {
-  height: 24px;
-  width: 60px;
-  line-height: 24px;
-  margin: 5px 5px;
-  padding: 0 0.5em;
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5em;
 }
 
-.btn-icon{
-  font-size: 16px;
-  
+.btn-icon {
+    font-size: 16px;
 }
+
+
 /* styling for collapsible */
 
 .position-abs {
-  position: absolute;
-  right: 0;
-  top: 10px;
+    position: absolute;
+    right: 0;
+    top: 10px;
 }
 
 .position-rel {
-  position: relative;
+    position: relative;
 }
 
 .text-item {
@@ -99,47 +95,33 @@ h4 {
     margin: 10px;
 }
 
-.collapsable-icon{
+.collapsable-icon {
     margin-top: 7px;
-
 }
 
 .strike {
     text-decoration: line-through;
 }
 
+
 /* horizontal scroll menu for categories in saved shopping list*/
 
 .scrollmenu {
-  overflow: auto;
-  white-space: nowrap;
-  display: none;
+    overflow: auto;
+    white-space: nowrap;
+    display: none;
 }
-.scrollmenu a {
-  display: inline-block;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
 
+.scrollmenu a {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
 }
+
 .scrollmenu a:hover {
-  background-color: #777;
-}
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+    background-color: #777;
 }
 
 
@@ -149,11 +131,12 @@ h4 {
     word-wrap: break-word;
 }
 
+
 /* my shopping list */
 
 .position-abs-img {
-  position: absolute;
-  right: 2em;
+    position: absolute;
+    right: 2em;
 }
 
 .unit {
@@ -163,6 +146,7 @@ h4 {
 .wrap-text {
     word-wrap: break-word;
 }
+
 
 /* footer */
 
