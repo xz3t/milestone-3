@@ -50,12 +50,12 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">location_searching</i>
         <select id="item_shop" name="item_shop" required>
-          <option value="" disabled selected>Choose a shop to buy from:</option>
+          <option value="" disabled selected>Preffered shop:</option>
           {% for shop in shops %}
           <option class="left" value="{{shop.shop_name}}" data-icon="{{shop.shop_logo}}">{{shop.shop_name}}</option>
           {% endfor %}
         </select>
-        <label>Shop to buy from *</label>
+        <label>Preffered shop *</label>
       </div>
     </div>
     <div class="row">
