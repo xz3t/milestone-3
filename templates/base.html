@@ -56,7 +56,7 @@
         </nav>
     </header>
     <!-- section with flash message -->
-    <section>
+    <aside>
         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
         <div class="container">
              <div id="message" class="row materialert center-align">
@@ -64,7 +64,7 @@
              </div>
         </div>
         {% endfor %} {% endif %} {% endwith %}
-    </section>
+    </aside>
     <!-- main content -->
     <main class="container">
         {% block content %}
@@ -92,7 +92,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container center">
-                © 2020 Valentin Leu
+                2020 Valentin Leu
             </div>
         </div>
     </footer>
