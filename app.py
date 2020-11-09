@@ -371,7 +371,7 @@ def insert_recipe():
     exist = mongo.db.recipes.find_one(
         {"recipe_name": re.compile(recipe_name, re.IGNORECASE)})
     if exist is None:
-        flash('Recipe created successfully! Edit your new recipe to add items.')
+        flash('Success! Edit your new recipe to add items.')
         recipes.insert_one(request.form.to_dict())
         return redirect(url_for('recipes'))
     else:
