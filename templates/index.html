@@ -2,15 +2,15 @@
 
 <h4>Welcome!</h4>
 
-<div class="row">
-    <div class="col-9">
+<div class="row ">
+
+    <div class="col-9 ">
         <div class="card-panel">
-                Create your shopping list, add items and recipe/groups of items,
-                snap a photo in the shop of your item or add a local picture.
+            Create your shopping list, add items and recipe/groups of items, snap a photo in the shop of your item or add a local picture.
             <p> Share the list with designated shopper.</p>
-            <p> Sign up if you are new here or Log in and start
-                creating youre shopping list.
+            <p> Sign up if you are new here or Log in and start creating youre shopping list.
             </p>
+
             <div class="row">
                 <a href="{{ url_for('register') }}" class="col s8 offset-s2 btn-large blue-grey darken-3">
                     Register <span class="fas fa-user-plus btn-icon"></span></a>
@@ -20,9 +20,12 @@
                     Log In <span class="fas fa-sign-in-alt btn-icon"></span>
                 </a>
             </div>
-
         </div>
     </div>
+    <div class="col-9 bg-img">
+
+    </div>
 </div>
+
 
 {% endblock %}

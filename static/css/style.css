@@ -21,6 +21,14 @@ h4 {
     margin-left: 20px;
 }
 
+/* main page image */
+
+.bg-img {
+    background-image: url("/static/images/bg-list.jpg");
+    background-size: 100% 50vh;
+    background-repeat: no-repeat;
+    height: 30vh;
+}
 
 /* flash message*/
 
