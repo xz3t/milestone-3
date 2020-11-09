@@ -365,10 +365,18 @@ def insert_recipe():
     Will create a new recipe, return a flash message to user with
     success and further instructions to add items in created recipe
     '''
+    error = None
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
-    flash('Recipe created successfully! Edit your new recipe to add items.')
-    return redirect(url_for('recipes'))
+    recipe_name = request.form.get('recipe_name')
+    exist = mongo.db.recipes.find_one(
+        {"recipe_name": re.compile(recipe_name, re.IGNORECASE)})
+    if exist is None:
+        flash('Recipe created successfully! Edit your new recipe to add items.')
+        recipes.insert_one(request.form.to_dict())
+        return redirect(url_for('recipes'))
+    else:
+        error = 'Name already exist in database!'
+    return render_template("addrecipe.html", error=error)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
