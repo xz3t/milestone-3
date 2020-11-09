@@ -12,9 +12,10 @@
       class="material-icons right">shop</i>Use shopping list</a>
   <a class="waves-effect waves-light btn blue-grey darken-3 modal-trigger " href="#clipboard-modal"><i class="material-icons right">share</i>Share</a>
 </div>
-{% if lists.count() <1  %}
+{% if lists.count() <1 %}
 <div>
-<h4>Start creating youre Shopping list!</h4>
+<h4>Start building youre Shopping list!</h4>
+<p>To create new Items/Recipes click on Menu on top of the page.</p>
 </div>
 {%else%}
 <ul class="collapsible">
