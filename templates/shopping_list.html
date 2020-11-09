@@ -44,8 +44,10 @@
           <div id="modal1" class="modal bottom-sheet">
             <div class="modal-content center-align wrap-text">
               <h5 class="center-align">Attention!</h5>
-              <p> Item you want to delete was added as part of {{list.from_recipe}} recipe/group</p>
-              <p> You can delete just selected item or remove all items from the recipe/group it is a part off.</p>
+              <p> Item you want to delete was added as part of <br>
+               <strong> {{list.from_recipe}}  </strong> group</p>
+              <p> You can delete just selected item <br>
+              or remove all items from the recipe/group it is a part off.</p>
               <p class="center-align">
                 <a href="{{url_for('delete_shoping_item', list_id=list._id, del_all=0)}}"
                   class="waves-effect btn-flat"><span> selected item
