@@ -7,7 +7,7 @@ You can add items and recipe/groups of items, snap a photo in the shop of your d
 Create shopping list and share it with your designated shopper.
 As each family member has his/hers own preferences, weekly shopping will not differ drastically from week to week and once all items and recipe/groups will be set up it will take a few minutes to make adjustments and edit your shopping list or create one from scratch.
 
-![Preview](/docs/preview.jpg)
+![Preview](/docs/responsive.jpg)
 
 ## User Experience (UX)
 
@@ -47,9 +47,13 @@ The scope of this milestone project is to create a fully responsive website with
 
 *   ### Wireframes
 
-    -   Desktop Pages view sketch - [View](#)
+    -   Main, shopping list - [View](/docs/main_shopping.jpg)
 
-    -   Mobile page view sketch - [View](#)
+    -   Items, recipes - [View](/docs/items_recipes.jpg)
+
+    -   Mobile navigation - [View](/docs/mobile_nav.jpg)
+
+    -   Collection structure - [View](/docs/collection.jpg)
 
 
 ## Features
@@ -436,6 +440,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 -   Pictures for items were taken from LIDL/ALDI/Tesco websites.
 -   Logo and icon [Link](https://icons8.com/icons/set/cart)
+-   main page image [Link](https://pixabay.com/photos/grocery-list-pen-paper-notepad-1670408/)
 
 ### Acknowledgements
 
@@ -443,3 +448,5 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 
 ### Links
+
+- for responsive image [Link](http://ami.responsivedesign.is/)
