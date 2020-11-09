@@ -407,6 +407,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 ### Known Bugs
 
 - materialbox don't work properly on saved shopping list, some images will not open in full screen. Works in the top section of the page. on scroll down to the bottom images doesnt work.
+- materialize selectable on chrome some time need to click twice, no issue on mobile version.
 
 ### Features to implement
 
@@ -440,7 +441,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 -   Pictures for items were taken from LIDL/ALDI/Tesco websites.
 -   Logo and icon [Link](https://icons8.com/icons/set/cart)
--   main page image [Link](https://pixabay.com/photos/grocery-list-pen-paper-notepad-1670408/)
+-   Main page image [Link](https://pixabay.com/photos/grocery-list-pen-paper-notepad-1670408/)
 
 ### Acknowledgements
 
@@ -449,4 +450,4 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 ### Links
 
-- for responsive image [Link](http://ami.responsivedesign.is/)
+- Responsive image [Link](http://ami.responsivedesign.is/)
