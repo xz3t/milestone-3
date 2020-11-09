@@ -1,5 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
+<!-- flash message container -->
+
+<div class="row">
+  {% if error %}
+  <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+</div>
+
 <h4>Create new recipe or group of items</h4>
 
 <!--Creating an recipe/group name , user will be redirected to recipe page with a flash message instruction to go and edit created recipe/group-->
