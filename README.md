@@ -60,6 +60,7 @@ The scope of this milestone project is to create a fully responsive website with
 
 ### Main page
 - Welcome page with a quick greeting message and Register and LogIn links.
+- After user is logged in button Login and Register will dissapear.
 
 ### Navigation bar
 - Before user will log in will display: Home , Log In and Register.
@@ -297,6 +298,10 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 -   [PEP8 Validator](http://pep8online.com/) - app.py and utils.py - Pass
 
 ### Features Testing
+
+#### Main page
+- Check if links are working properly on navbar and main page and mobile view.
+- When user is logged in SingUp message and Login and Register buttons should dissapear.
 
 #### Register
 - Check if links are working properly on navbar and main page and mobile view.
