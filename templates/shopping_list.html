@@ -38,10 +38,10 @@
 
         {%else%}
         <div class="position-abs">
-            <a href="#modal1"
+            <a href="#{{list.from_recipe}}"
               class="waves-effect waves-light btn btn-my red modal-trigger">del</a>
           <!-- Modal with option to delete one item or all recipe item is a part off -->
-          <div id="modal1" class="modal bottom-sheet">
+          <div id="{{list.from_recipe}}" class="modal bottom-sheet">
             <div class="modal-content center-align wrap-text">
               <h5 class="center-align">Attention!</h5>
               <p> Item you want to delete was added as part of <br>
