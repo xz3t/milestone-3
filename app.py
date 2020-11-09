@@ -38,11 +38,11 @@ def login():
                 flash("Welcome, {} ".format(request.form.get("username")))
                 return redirect(url_for('shopping_list'))
             else:
-                flash("Incorrect Username and/or Password")
+                flash("Incorrect Username and/or Password!")
                 return redirect(url_for("login"))
 
         else:
-            flash("Incorrect Username and/or Password")
+            flash("Incorrect Username and/or Password!")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -55,7 +55,7 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists!")
             return redirect(url_for("register"))
 
         register = {
@@ -246,7 +246,7 @@ def delete_shoping_item(list_id):
         flash('All items associated with recipe removed!')
     else:
         mongo.db.shopping_list.remove({'_id': ObjectId(list_id)})
-        flash('selected item successfully removed!')
+        flash('Selected item successfully removed!')
     return redirect(url_for('shopping_list'))
 
 
@@ -445,7 +445,7 @@ def submit_feedback():
 
 @app.route("/logout")
 def logout():
-    flash("You have been logged out")
+    flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for("index"))
 
