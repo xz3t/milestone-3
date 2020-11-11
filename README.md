@@ -461,3 +461,7 @@ Not adressed yet:
 ### Links
 
 - Responsive image [Link](http://ami.responsivedesign.is/)
+- Clipboard copy functionality [Link] (https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
+- Tooltip not showing fix for selectable inputs [Link] (https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown)
+- Horizontal scroll functionality [Link] (https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp)
+- Flash message style [Link](https://stackoverflow.com/questions/38156282/create-alert-using-materialize-css)
