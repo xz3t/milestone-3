@@ -1,3 +1,4 @@
+/* main elements */
 html {
     scroll-behavior: smooth;
 }
@@ -30,7 +31,7 @@ h4 {
     height: 30vh;
 }
 
-/* flash message*/
+/* flash message -> https://stackoverflow.com/questions/38156282/create-alert-using-materialize-css */
 
 .materialert {
     position: relative;
@@ -112,7 +113,7 @@ h4 {
 }
 
 
-/* horizontal scroll menu for categories in saved shopping list*/
+/* horizontal scroll menu for categories in saved shopping list -> https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp */
 
 .scrollmenu {
     overflow: auto;
