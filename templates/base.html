@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
         integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
         crossorigin="anonymous" type="text/css">
@@ -117,6 +117,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- Source for imgBB.js is commented in the file -->
     <script src="{{url_for('static', filename='js/imgBB.js')}}"></script>
     <script>
         $(document).ready(function () {
@@ -127,25 +128,25 @@
             $('.tooltipped').tooltip();
             $('.materialboxed').materialbox();
             // fade out added for messages to dissapear
-            $('#message').delay(5000).fadeOut(400)
+            $('#message').delay(5000).fadeOut(400);
         });
         // show/hide shops in shopping list
         function shopToggle(x) {
             $('#' + x).toggle("slide");
-        };
+        }
         // show/hide categories in shops
         function catToggle(y, z) {
             $("div[class*=" + y + "]").hide();
             $('.' + y + z).toggle("slide");
-        };
+        }
         // show/hide All shops
         function catAll(z) {
             $("div[class*= " + z + "]").show();
-        };
-        // fix tooltip to appear over materialize select input
+        }
+        // fix tooltip to appear over materialize select input -> https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown
         $("select[required]").css({ display: "block", height: 0, padding: 0, width: 0, position: 'absolute', left: '50%', top: '3em' });
 
-          // copy to clipboard
+          // copy to clipboard -> https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 
         function copyClipboard() {
             var copyText = document.getElementById("copyLink");
