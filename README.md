@@ -404,15 +404,20 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 ### Further Testing
 
--   The Website was tested on Google Chrome, Opera, Microsoft Edge, and mobile Safari browsers.
--   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone5S, iPhone 6, Nokia 5 & Pixel3a.
+-   Browsers tested from Windows 10: Google Chrome, Opera, Microsoft Edge.
+-   Browsers tested from Linux (PopOS/Ubuntu): Chrome/Firefox
+-   Browsers tested from Mobile : Safari, Chrome
+-   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone5S, iPhone 6S, Nokia 5 & Pixel3a.
 -   Friends were asked to review functionality and point out any bugs and/or user experience issues.
 
 
 ### Known Bugs
 
-- materialbox don't work properly on saved shopping list, some images will not open in full screen. Works in the top section of the page. on scroll down to the bottom images doesnt work.
-- materialize selectable on chrome some time need to click twice, no issue on mobile version.
+Not adressed yet:
+
+- In Windows 10 and Chrome Mobile: materialbox don't work properly on saved shopping list, some images will not open in full screen. Works in the top section of the page. on scroll down to the bottom images doesnt work.
+- In Windows 10: materialize selectable on Chrome/Firefox browser needs to click twice, no issue on Mobile browsers or Linux in any browser.
+- User feedback : Logo is a shopping cart and by clicking on it user dont expect to go on Home page but to a shopping cart.
 
 ### Features to implement
 
