@@ -13,7 +13,7 @@ As each family member has his/hers own preferences, weekly shopping will not dif
 
 ### Project Goals
 
-Shopping list app project is part of Data Centric Development module from my Full Stack Software Development studies with Code Institute. 
+"Weekly Shopping List" project is part of Data Centric Development module from my Full Stack Software Development studies with Code Institute. 
 The scope of this milestone project is to create a fully responsive website with possibility to perform CRUD (Create, Read, Update, and Delete) operation in MongoDb, using Python and Flask micro web framework.
 
 -   ### User stories
@@ -301,7 +301,7 @@ The W3C Markup Validator, W3C CSS Validator and PEP8 Validator were used to vali
 
 #### Main page
 - Check if links are working properly on navbar and main page and mobile view.
-- When user is logged in SingUp message and Login and Register buttons should dissapear.
+- When user is logged in, message to sign up and Login and Register buttons should dissapear.
 
 #### Register
 - Check if links are working properly on navbar and main page and mobile view.
