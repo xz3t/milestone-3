@@ -460,6 +460,7 @@ Not adressed yet:
 
 ### Links
 
+- Main resourses for fixing issues met on the project: [W3Schools](https://www.w3schools.com/) and [Stack Overflow](https://stackoverflow.com/)
 - Responsive image [Link](http://ami.responsivedesign.is/)
 - Clipboard copy functionality [Link] (https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
 - Tooltip not showing fix for selectable inputs [Link] (https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown)
