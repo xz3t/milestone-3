@@ -1,6 +1,6 @@
 # Weekly Shopping List app
 
-[View the live project here.](http://weekly-shopping-app.herokuapp.com/)
+[View the live project here.](https://weekly-shopping-app.herokuapp.com/)
 
 Weekly Shopping List app's aim is to simplify weekly shopping for an household and/or easily organize a small party. 
 You can add items and recipe/groups of items, snap a photo in the shop of your desired product or add an picture from your tablet or pc.
