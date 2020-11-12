@@ -417,7 +417,8 @@ Not adressed yet:
 
 - In Windows 10 and Chrome Mobile: materialbox don't work properly on saved shopping list, some images will not open in full screen. Works in the top section of the page. on scroll down to the bottom images doesnt work.
 - In Windows 10: materialize selectable on Chrome/Firefox browser needs to click twice, no issue on Mobile browsers or Linux in any browser.
-- User feedback : Logo is a shopping cart and by clicking on it user dont expect to go on Home page but to a shopping cart.
+- Adress user feedback : Logo is a shopping cart and by clicking on it user dont expect to go on Home page but to a shopping cart.
+- 2 files has underscores in the name and are not same as the rest of the files(shopping_list.html and use_shopping_list.html) - was not renamed not to effect commits history.
 
 ### Features to implement
 
